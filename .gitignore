@@ -4,3 +4,6 @@ node_modules/
 .impeccable/live/
 .impeccable/config.local.json
 .claude/worktrees/
+.data/
+.env*
+.vercel/

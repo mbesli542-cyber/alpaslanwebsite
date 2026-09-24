@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yönetim | PARLA Herrenmode</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#12382c">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/admin.js" defer></script>
+</head>
+<body>
+  <!-- Login -->
+  <main class="login" data-login hidden>
+    <form class="login__box" data-login-form>
+      <p class="brand">PARLA <span>Yönetim</span></p>
+      <label for="pw">Şifre</label>
+      <input id="pw" name="password" type="password" autocomplete="current-password" required autofocus>
+      <p class="err" data-login-err role="alert" hidden></p>
+      <button class="btn btn--primary" type="submit">Giriş yap</button>
+    </form>
+  </main>
+
+  <!-- App -->
+  <div class="app" data-app hidden>
+    <header class="top">
+      <p class="brand">PARLA <span>Yönetim</span></p>
+      <nav class="tabs" role="tablist">
+        <button type="button" role="tab" data-tab="products" aria-selected="true">Ürünler</button>
+        <button type="button" role="tab" data-tab="orders" aria-selected="false">Siparişler <span class="pill" data-new-orders hidden></span></button>
+        <button type="button" role="tab" data-tab="settings" aria-selected="false">Ayarlar</button>
+      </nav>
+      <div class="top__end">
+        <a href="shop.html" target="_blank" rel="noopener" class="link">Mağazayı gör ↗</a>
+        <button type="button" class="link" data-logout>Çıkış</button>
+      </div>
+    </header>
+
+    <div class="notice" data-setup hidden></div>
+
+    <!-- Products -->
+    <section class="panel" data-panel="products">
+      <div class="panel__head">
+        <h1>Ürünler</h1>
+        <button type="button" class="btn btn--primary" data-new>+ Yeni ürün</button>
+      </div>
+      <input class="search" type="search" placeholder="Ürün ara…" data-search aria-label="Ürün ara">
+      <ul class="plist" role="list" data-plist></ul>
+    </section>
+
+    <!-- Orders -->
+    <section class="panel" data-panel="orders" hidden>
+      <div class="panel__head"><h1>Siparişler</h1><button type="button" class="btn" data-reload-orders>Yenile</button></div>
+      <ul class="olist" role="list" data-olist></ul>
+    </section>
+
+    <!-- Settings -->
+    <section class="panel" data-panel="settings" hidden>
+      <div class="panel__head"><h1>Ayarlar</h1></div>
+      <form class="card form" data-settings-form>
+        <h2>Teslimat</h2>
+        <label class="check"><input type="checkbox" name="allowPickup"> Mağazadan teslim (F1 8, ücretsiz)</label>
+        <label class="check"><input type="checkbox" name="allowShipping"> Almanya içi kargo</label>
+        <div class="row">
+          <label>Kargo ücreti (€)<input name="shipping" inputmode="decimal" placeholder="9,90"></label>
+          <label>Şu tutardan itibaren ücretsiz kargo (€, 0 = yok)<input name="freeFrom" inputmode="decimal" placeholder="0"></label>
+        </div>
+        <button class="btn btn--primary" type="submit">Kaydet</button>
+        <p class="ok" data-settings-ok hidden>Kaydedildi.</p>
+      </form>
+      <div class="card" data-setup-list></div>
+    </section>
+  </div>
+
+  <!-- Product editor -->
+  <dialog class="editor" data-editor>
+    <form method="dialog" class="form" data-form>
+      <div class="editor__head">
+        <h2 data-editor-title>Yeni ürün</h2>
+        <button type="button" class="x" data-cancel aria-label="Kapat">×</button>
+      </div>
+
+      <div class="editor__body">
+        <fieldset>
+          <legend>Fotoğraflar</legend>
+          <div class="images" data-images></div>
+          <label class="upload">
+            <input type="file" accept="image/*" multiple data-files>
+            <span>+ Fotoğraf ekle</span>
+          </label>
+          <p class="hint">İlk fotoğraf kapak olur. Oklarla sıralayın. Fotoğraflar yüklenirken otomatik küçültülür.</p>
+        </fieldset>
+
+        <div class="row">
+          <label>Ürün adı (Almanca) *<input name="nameDe" required maxlength="120" placeholder="z. B. Zweireiher Anthrazit"></label>
+          <label>Ürün adı (Türkçe)<input name="nameTr" maxlength="120" placeholder="örn. Kruvaze Antrasit"></label>
+        </div>
+        <div class="row">
+          <label>Kategori
+            <select name="category">
+              <option value="anzug">Takım (Anzug)</option>
+              <option value="hochzeit">Damatlık (Hochzeit)</option>
+              <option value="sakko">Ceket (Sakko)</option>
+              <option value="hose">Pantolon (Hose)</option>
+              <option value="hemd">Gömlek (Hemd)</option>
+              <option value="accessoires">Aksesuar</option>
+            </select>
+          </label>
+          <label>Fiyat (€, KDV dahil) *<input name="price" required inputmode="decimal" placeholder="349,00"></label>
+          <label>Eski fiyat (€, isteğe bağlı)<input name="compare" inputmode="decimal" placeholder="429,00"></label>
+        </div>
+
+        <fieldset>
+          <legend>Bedenler ve stok</legend>
+          <div class="presets">
+            <span>Hazır:</span>
+            <button type="button" class="chip" data-preset="44,46,48,50,52,54,56,58,60">Takım 44–60</button>
+            <button type="button" class="chip" data-preset="24,25,26,27,28,29">Kısa 24–29</button>
+            <button type="button" class="chip" data-preset="94,98,102,106,110">Uzun 94–110</button>
+            <button type="button" class="chip" data-preset="37,38,39,40,41,42,43,44,45,46">Gömlek 37–46</button>
+            <button type="button" class="chip" data-preset="Einheitsgröße">Tek beden</button>
+          </div>
+          <div class="sizes" data-sizes></div>
+          <button type="button" class="btn btn--small" data-add-size>+ Beden ekle</button>
+        </fieldset>
+
+        <div class="row">
+          <label>Açıklama (Almanca)<textarea name="descDe" rows="4" maxlength="2000" placeholder="Stoff, Schnitt, Farbe…"></textarea></label>
+          <label>Açıklama (Türkçe)<textarea name="descTr" rows="4" maxlength="2000" placeholder="Kumaş, kesim, renk…"></textarea></label>
+        </div>
+
+        <div class="row row--checks">
+          <label class="check"><input type="checkbox" name="published"> Mağazada yayında</label>
+          <label class="check"><input type="checkbox" name="featured"> Öne çıkar (en başta göster)</label>
+        </div>
+      </div>
+
+      <div class="editor__foot">
+        <button type="button" class="btn btn--danger" data-delete hidden>Sil</button>
+        <p class="err" data-form-err role="alert" hidden></p>
+        <button type="button" class="btn" data-cancel>Vazgeç</button>
+        <button type="submit" class="btn btn--primary" data-save>Kaydet</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

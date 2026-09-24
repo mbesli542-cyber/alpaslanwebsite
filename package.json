@@ -1,0 +1,17 @@
+{
+  "name": "parla-herrenmode",
+  "private": true,
+  "type": "module",
+  "description": "PARLA Herrenmode: website, shop (Stripe) and admin panel on Vercel",
+  "scripts": {
+    "dev": "node tools/dev-server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.39.0",
+    "@vercel/blob": "^2.8.0",
+    "stripe": "^22.6.2"
+  }
+}
