@@ -164,9 +164,31 @@
     $('[data-p-name]', sheet).textContent = nameOf(p);
     $('[data-p-price]', sheet).innerHTML = `${p.compareAtCents ? `<s>${money(p.compareAtCents)}</s> ` : ''}${money(p.priceCents)}`;
     $('[data-p-desc]', sheet).textContent = descOf(p) || '';
-    $('[data-gallery]', sheet).innerHTML = p.images.length
-      ? p.images.map((u, i) => `<img src="${esc(u)}" alt="${i === 0 ? esc(nameOf(p)) : ''}" loading="${i ? 'lazy' : 'eager'}" decoding="async">`).join('')
-      : '<span class="card__empty"></span>';
+    const gal = $('[data-gallery]', sheet);
+    if (gal.dataset.for !== p.id) {
+      gal.dataset.for = p.id;
+      gal.innerHTML = p.images.length ? `
+        <div class="gal__main">
+          <div class="gal__track" data-track>
+            ${p.images.map((u, i) => `<img src="${esc(u)}" alt="${esc(nameOf(p))}${p.images.length > 1 ? ` (${i + 1}/${p.images.length})` : ''}" loading="${i ? 'lazy' : 'eager'}" decoding="async" draggable="false">`).join('')}
+          </div>
+          ${p.images.length > 1 ? `
+            <button type="button" class="gal__nav gal__nav--prev" data-step="-1" aria-label="${lang() === 'tr' ? 'Önceki fotoğraf' : 'Vorheriges Foto'}">‹</button>
+            <button type="button" class="gal__nav gal__nav--next" data-step="1" aria-label="${lang() === 'tr' ? 'Sonraki fotoğraf' : 'Nächstes Foto'}">›</button>` : ''}
+        </div>
+        ${p.images.length > 1 ? `<div class="gal__thumbs">${p.images.map((u, i) => `
+          <button type="button" class="gal__thumb" data-go="${i}" aria-label="${i + 1}" aria-current="${i === 0}"><img src="${esc(u)}" alt="" loading="lazy" decoding="async"></button>`).join('')}</div>` : ''}`
+        : '<span class="card__empty"></span>';
+      galleryIndex = 0;
+      const track = $('[data-track]', gal);
+      if (track) {
+        track.scrollLeft = 0;
+        track.addEventListener('scroll', () => {
+          const i = Math.round(track.scrollLeft / track.clientWidth);
+          if (i !== galleryIndex) { galleryIndex = i; markThumb(); }
+        }, { passive: true });
+      }
+    }
     $('[data-sizes]', sheet).innerHTML = p.sizes.map((s) => `
       <button type="button" class="size" data-size="${esc(s.label)}" aria-pressed="${chosen === s.label}" ${s.available ? '' : 'disabled'}>
         ${esc(s.label)}${s.available ? '' : `<span class="sr-only"> ${t('soldOut')}</span>`}
@@ -177,7 +199,27 @@
     add.disabled = p.soldOut;
   };
 
+  let galleryIndex = 0;
+  const markThumb = () => $$('.gal__thumb', sheet).forEach((t, i) => t.setAttribute('aria-current', String(i === galleryIndex)));
+  const goTo = (i) => {
+    const track = $('[data-track]', sheet);
+    if (!track || !current) return;
+    const n = current.images.length;
+    galleryIndex = (i + n) % n;
+    track.scrollTo({ left: galleryIndex * track.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    markThumb();
+  };
+  document.addEventListener('keydown', (e) => {
+    if (!sheet || sheet.hidden || !current || current.images.length < 2) return;
+    if (e.key === 'ArrowLeft') goTo(galleryIndex - 1);
+    if (e.key === 'ArrowRight') goTo(galleryIndex + 1);
+  });
+
   sheet && sheet.addEventListener('click', (e) => {
+    const st = e.target.closest('[data-step]');
+    if (st) { goTo(galleryIndex + Number(st.dataset.step)); return; }
+    const go = e.target.closest('[data-go]');
+    if (go) { goTo(Number(go.dataset.go)); return; }
     const b = e.target.closest('[data-size]');
     if (b && !b.disabled) { chosen = b.dataset.size; renderProduct(); }
     if (e.target.closest('[data-add]')) {
