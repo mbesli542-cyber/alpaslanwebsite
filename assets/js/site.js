@@ -491,7 +491,10 @@ const whenArrived = (() => {
       const intros = panels.map((p, i) => {
         const v = document.createElement('video');
         v.className = 'pose pose--video pose--intro is-on' + (i === 1 ? '' : ' pose--flip');
-        v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = intro;
+        v.muted = true; v.playsInline = true; v.preload = 'auto';
+        const introWebm = triptych.dataset.videoIntroWebm;
+        if (introWebm) { const a = document.createElement('source'); a.src = introWebm; a.type = 'video/webm'; v.appendChild(a); }
+        const m = document.createElement('source'); m.src = intro; m.type = 'video/mp4'; v.appendChild(m);
         v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
         p.el.appendChild(v);
         return v;
