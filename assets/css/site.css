@@ -623,8 +623,6 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
   background:
     linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%),
     linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%),
-    linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%),
-    linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08)),
     radial-gradient(80% 45% at 50% 0%, rgba(255, 238, 200, 0.3), transparent 70%),
     linear-gradient(90deg,
@@ -634,6 +632,8 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
 }
 .glass--right::before {
   background:
+    linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%),
+    linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%),
     linear-gradient(270deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08)),
     radial-gradient(80% 45% at 50% 0%, rgba(255, 238, 200, 0.3), transparent 70%),
     linear-gradient(90deg,
