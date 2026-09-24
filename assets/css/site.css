@@ -1254,3 +1254,6 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 /* The shopfront frame only appears once its photo has actually loaded */
 .js .shopfront { display: none; }
 .js .shopfront:has(.slot__img.is-loaded) { display: block; }
+
+/* Studio shots on white: multiply lets the white backdrop take on the mirror's silver */
+.glass .slot__img { mix-blend-mode: multiply; }
