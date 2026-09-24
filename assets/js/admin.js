@@ -278,7 +278,8 @@
       ${item(setup.images, 'Fotoğraf deposu (Vercel Blob)')}
       ${item(setup.stripe, 'Stripe anahtarı' + (setup.testMode ? ' (TEST modu)' : ''))}
       ${item(setup.webhook, 'Stripe webhook')}
-    </ul><p class="hint">Eksik olanların kurulumu README'deki “Shop kurulumu” bölümünde adım adım anlatılıyor.</p>`;
+    </ul><p class="hint">Eksik olanların kurulumu README'deki “Shop kurulumu” bölümünde adım adım anlatılıyor.</p>
+    <p class="hint">Ortam: ${esc(setup.environment)} · Bulunan depo değişkenleri: ${setup.storageVars.length ? setup.storageVars.map(esc).join(', ') : 'hiç yok'}</p>`;
     const missing = !setup.database || !setup.images || !setup.stripe || !setup.webhook;
     const n = $('[data-setup]');
     n.hidden = !missing && !setup.testMode;
