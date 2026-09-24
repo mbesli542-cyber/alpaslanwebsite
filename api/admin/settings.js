@@ -1,6 +1,7 @@
 import { json, readJson, safe } from '../../lib/http.js';
 import { requireAdmin } from '../../lib/auth.js';
 import { getSettings, saveSettings } from '../../lib/store.js';
+import { redisUrl, redisToken, blobToken } from '../../lib/env.js';
 
 const toCents = (v, fallback) => {
   const n = Math.round(Number(v));
@@ -12,8 +13,8 @@ export const GET = safe(async (request) => {
   return json({
     settings: await getSettings(),
     setup: {
-      database: Boolean(process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL),
-      images: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      database: Boolean(redisUrl() && redisToken()),
+      images: Boolean(blobToken()),
       stripe: Boolean(process.env.STRIPE_SECRET_KEY),
       webhook: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
       testMode: (process.env.STRIPE_SECRET_KEY || '').startsWith('sk_test_'),
