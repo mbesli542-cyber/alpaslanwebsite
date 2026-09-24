@@ -1282,3 +1282,5 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .pose { transition: opacity 200ms ease; filter: none; transform: none; }
 }
+.triptych.has-video .pose:not(.pose--video) { display: none; }
+.pose--video { filter: none; transform: none; transition: opacity 500ms ease; }

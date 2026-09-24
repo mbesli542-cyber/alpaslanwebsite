@@ -331,7 +331,7 @@
   const stop = () => { window.clearInterval(timer); timer = 0; };
   const play = () => {
     stop();
-    if (reduce.matches || !visible || document.hidden) return;
+    if (reduce.matches || !visible || document.hidden || triptych.classList.contains('has-video')) return;
     timer = window.setInterval(() => show(pose + 1, 1), 2400);
   };
 
@@ -362,6 +362,7 @@
     let stepped = 0;
     let dragging = false;
     triptych.addEventListener('pointerdown', (e) => {
+      if (triptych.classList.contains('has-video')) return;
       dragging = true; startX = e.clientX; stepped = 0;
       triptych.classList.add('is-dragging');
       triptych.setPointerCapture(e.pointerId);
@@ -402,4 +403,98 @@
       img.addEventListener('error', () => settle(false), { once: true });
     }
   });
+})();
+
+/* ---------- Turning video: one 360° turn, shown in all three mirrors at different angles ---------- */
+(() => {
+  'use strict';
+  const triptych = document.querySelector('[data-mirror]');
+  const src = triptych && triptych.dataset.video;
+  if (!src || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const panels = [
+    { el: triptych.querySelector('.glass--left'), offset: 0.25 },
+    { el: triptych.querySelector('.glass--center'), offset: 0 },
+    { el: triptych.querySelector('.glass--right'), offset: 0.75 },
+  ];
+  if (panels.some((p) => !p.el)) return;
+
+  const videos = panels.map((p) => {
+    const v = document.createElement('video');
+    v.className = 'pose pose--video';
+    v.muted = true;
+    v.defaultMuted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.preload = 'auto';
+    v.setAttribute('muted', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('aria-hidden', 'true');
+    if (triptych.dataset.poster) v.poster = triptych.dataset.poster;
+    const webm = triptych.dataset.videoWebm;
+    if (webm) { const s1 = document.createElement('source'); s1.src = webm; s1.type = 'video/webm'; v.appendChild(s1); }
+    const s2 = document.createElement('source'); s2.src = src; s2.type = 'video/mp4'; v.appendChild(s2);
+    p.el.appendChild(v);
+    return v;
+  });
+  const lead = videos[1];
+  let duration = 0;
+  let visible = true;
+
+  const align = (base) => {
+    videos.forEach((v, i) => {
+      const t = (base + panels[i].offset * duration) % duration;
+      if (Math.abs(v.currentTime - t) > 0.12) v.currentTime = t;
+    });
+  };
+  const playAll = () => {
+    if (!visible || document.hidden) return;
+    videos.forEach((v) => { const r = v.play(); if (r && r.catch) r.catch(() => {}); });
+  };
+  const pauseAll = () => videos.forEach((v) => v.pause());
+
+  let ready = 0;
+  videos.forEach((v) => v.addEventListener('loadeddata', () => {
+    if (++ready !== videos.length) return;
+    duration = lead.duration || 5;
+    align(0);
+    triptych.classList.add('has-video', 'is-turning');
+    videos.forEach((vv) => vv.classList.add('is-on'));
+    playAll();
+  }, { once: true }));
+  videos.forEach((v) => v.addEventListener('error', () => videos.forEach((vv) => vv.remove()), { once: true }));
+
+  // Keep the side mirrors in step with the centre mirror.
+  lead.addEventListener('timeupdate', () => { if (duration && !dragging) align(lead.currentTime); });
+
+  // Drag sideways to turn him by hand: scrubs all three mirrors.
+  let dragging = false;
+  let startX = 0;
+  let startT = 0;
+  triptych.addEventListener('pointerdown', (e) => {
+    if (!triptych.classList.contains('has-video')) return;
+    dragging = true; startX = e.clientX; startT = lead.currentTime;
+    triptych.classList.add('is-dragging');
+    triptych.setPointerCapture(e.pointerId);
+    pauseAll();
+  });
+  triptych.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const width = triptych.getBoundingClientRect().width || 1;
+    let t = (startT - ((e.clientX - startX) / width) * duration) % duration;
+    if (t < 0) t += duration;
+    videos.forEach((v, i) => { v.currentTime = (t + panels[i].offset * duration) % duration; });
+  });
+  const end = () => {
+    if (!dragging) return;
+    dragging = false;
+    triptych.classList.remove('is-dragging');
+    playAll();
+  };
+  triptych.addEventListener('pointerup', end);
+  triptych.addEventListener('pointercancel', end);
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; visible ? playAll() : pauseAll(); }).observe(triptych);
+  }
+  document.addEventListener('visibilitychange', () => (document.hidden ? pauseAll() : playAll()));
 })();
