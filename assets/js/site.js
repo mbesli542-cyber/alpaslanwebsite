@@ -289,3 +289,117 @@
     });
   });
 })();
+
+/* ---------- Turning model: the man turns in the fitting room, all three mirrors follow ---------- */
+(() => {
+  'use strict';
+  const triptych = document.querySelector('[data-mirror]');
+  if (!triptych) return;
+  const panels = [
+    { el: triptych.querySelector('.glass--left'), offset: 1 },
+    { el: triptych.querySelector('.glass--center'), offset: 0 },
+    { el: triptych.querySelector('.glass--right'), offset: 3 },
+  ];
+  const originals = panels.map((p) => p.el && p.el.querySelector('.slot__img'));
+  if (originals.some((img) => !img)) return;
+
+  // front, turn to one side, back, turn to the other side (the side shot mirrored)
+  const POSES = [
+    { src: originals[1].getAttribute('src') },
+    { src: originals[0].getAttribute('src') },
+    { src: originals[2].getAttribute('src') },
+    { src: originals[0].getAttribute('src'), flip: true },
+  ];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let pose = 0;
+  let layers = [];
+  let timer = 0;
+  let resumeTimer = 0;
+  let visible = true;
+
+  const show = (next, dir = 1) => {
+    pose = (next + POSES.length) % POSES.length;
+    layers.forEach((set, pi) => {
+      const active = (pose + panels[pi].offset) % POSES.length;
+      set.forEach((img, i) => {
+        img.style.setProperty('--turn', `${dir * 10}px`);
+        img.classList.toggle('is-on', i === active);
+      });
+    });
+  };
+
+  const stop = () => { window.clearInterval(timer); timer = 0; };
+  const play = () => {
+    stop();
+    if (reduce.matches || !visible || document.hidden) return;
+    timer = window.setInterval(() => show(pose + 1, 1), 2400);
+  };
+
+  const build = () => {
+    layers = panels.map((p, pi) => {
+      originals[pi].remove();
+      return POSES.map((ps) => {
+        const img = document.createElement('img');
+        img.className = 'pose' + (ps.flip ? ' pose--flip' : '');
+        img.src = ps.src;
+        img.alt = '';
+        img.decoding = 'async';
+        img.draggable = false;
+        p.el.appendChild(img);
+        return img;
+      });
+    });
+    triptych.classList.add('is-turning');
+    triptych.setAttribute('role', 'img');
+    triptych.setAttribute('aria-label', document.documentElement.lang === 'tr'
+      ? 'Prova kabininde dönen takım: önden, yandan ve arkadan'
+      : 'Anzug in der Anprobe, von vorne, von der Seite und von hinten');
+    show(0);
+    play();
+
+    // Drag sideways to turn him yourself
+    let startX = 0;
+    let stepped = 0;
+    let dragging = false;
+    triptych.addEventListener('pointerdown', (e) => {
+      dragging = true; startX = e.clientX; stepped = 0;
+      triptych.classList.add('is-dragging');
+      triptych.setPointerCapture(e.pointerId);
+      stop(); window.clearTimeout(resumeTimer);
+    });
+    triptych.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const steps = Math.trunc((e.clientX - startX) / 45);
+      if (steps !== stepped) {
+        const dir = steps > stepped ? 1 : -1;
+        show(pose + dir, dir);
+        stepped = steps;
+      }
+    });
+    const end = () => {
+      if (!dragging) return;
+      dragging = false;
+      triptych.classList.remove('is-dragging');
+      resumeTimer = window.setTimeout(play, 5000);
+    };
+    triptych.addEventListener('pointerup', end);
+    triptych.addEventListener('pointercancel', end);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; visible ? play() : stop(); }).observe(triptych);
+    }
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : play()));
+  };
+
+  // Only turn once all three photos exist; otherwise the mirrors keep their glass.
+  let pending = originals.length;
+  let failed = false;
+  const settle = (ok) => { failed = failed || !ok; if (--pending === 0 && !failed) build(); };
+  originals.forEach((img) => {
+    if (img.complete) settle(img.naturalWidth > 0);
+    else {
+      img.addEventListener('load', () => settle(true), { once: true });
+      img.addEventListener('error', () => settle(false), { once: true });
+    }
+  });
+})();

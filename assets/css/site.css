@@ -1257,3 +1257,28 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 
 /* Studio shots on white: multiply lets the white backdrop take on the mirror's silver */
 .glass .slot__img { mix-blend-mode: multiply; }
+
+/* Turning model: four poses stacked in each mirror, crossfaded with a slight blur */
+.pose {
+  position: absolute;
+  inset: 7px;
+  width: calc(100% - 14px);
+  height: calc(100% - 14px);
+  object-fit: cover;
+  z-index: 1;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateX(var(--turn, 10px)) scale(1.015);
+  transition: opacity 650ms ease, filter 650ms ease, transform 900ms var(--ease-out);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.pose.is-on { opacity: 1; filter: none; transform: none; }
+.pose--flip { scale: -1 1; }
+.triptych.is-turning { cursor: grab; touch-action: pan-y; }
+.triptych.is-dragging { cursor: grabbing; }
+@media (prefers-reduced-motion: reduce) {
+  .pose { transition: opacity 200ms ease; filter: none; transform: none; }
+}
