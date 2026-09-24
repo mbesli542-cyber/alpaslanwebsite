@@ -38,19 +38,19 @@
 
 :root {
   /* Velvet: the curtain and every wall of the cabin */
-  --velvet-975: #09130f;
-  --velvet-950: #0c1814;
-  --velvet-900: #0f201a;
-  --velvet-850: #132921;
-  --velvet-800: #183229;
-  --velvet-700: #21443a;
-  --velvet-600: #2e5b4d;
+  --velvet-975: #081a14;
+  --velvet-950: #0c261e;
+  --velvet-900: #12382c;
+  --velvet-850: #164133;
+  --velvet-800: #1a4a3a;
+  --velvet-700: #22594a;
+  --velvet-600: #2e6b59;
 
   /* Lamplight: text */
   --lamp: #efe7d4;
   --lamp-2: #bcc5b0;
-  --lamp-3: #93a494;
-  --lamp-line: rgba(239, 231, 212, 0.14);
+  --lamp-3: #a7b6a4;
+  --lamp-line: rgba(216, 178, 100, 0.26);
 
   /* Brass: rail, rings, hooks, primary action */
   --brass: #d8b264;
@@ -97,7 +97,11 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--velvet-900);
+  /* One continuous crushed-velvet ground under every section */
+  background-color: var(--velvet-900);
+  background-image: url("../img/velvet.jpg");
+  background-size: 1024px 1024px;
+  background-blend-mode: soft-light;
   color: var(--lamp);
   font-family: var(--font-body);
   font-size: 1.0625rem;
@@ -243,7 +247,7 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
   transition: background-color 300ms ease, border-color 300ms ease;
 }
 .nav.is-solid {
-  background: rgba(12, 24, 20, 0.86);
+  background: rgba(12, 38, 30, 0.9);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   backdrop-filter: blur(14px) saturate(1.2);
   border-bottom-color: rgba(216, 178, 100, 0.16);
@@ -403,10 +407,10 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
   flex-direction: column;
   overflow: hidden;
   isolation: isolate;
+  /* Transparent over the body velvet: lamp from above, no fill of its own */
   background:
-    radial-gradient(70% 55% at 62% 8%, rgba(240, 213, 150, 0.16), transparent 70%),
-    radial-gradient(90% 40% at 50% 104%, rgba(0, 0, 0, 0.55), transparent 70%),
-    linear-gradient(180deg, var(--velvet-900), var(--velvet-950));
+    radial-gradient(70% 55% at 62% 6%, rgba(240, 213, 150, 0.14), transparent 70%),
+    linear-gradient(180deg, rgba(4, 14, 10, 0.35), transparent 30%);
 }
 
 .rail--hero {
@@ -448,25 +452,74 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
 
 .curtain {
   position: absolute;
-  top: calc(var(--nav-h) + 18px);
+  top: calc(var(--nav-h) + 13px);
   bottom: 0;
   width: 50%;
   z-index: 2;
   pointer-events: none;
   transform: scaleX(var(--gather));
-  transition: transform 1500ms var(--ease-in-out);
-  background:
-    linear-gradient(180deg, rgba(240, 213, 150, 0.1), transparent 22%, transparent 70%, rgba(0, 0, 0, 0.45)),
-    linear-gradient(90deg,
-      #0b1612 0%, #1a3a2e 3.2%, #0e1d17 6.6%, #214537 10.8%, #0f1f19 14.6%, #1b3a2e 18.2%,
-      #0c1813 22.5%, #1e4034 26.8%, #10211a 30.4%, #173226 33.8%, #0b1612 37.9%, #22473a 42.6%,
-      #0f1f19 46.8%, #1a372c 50.4%, #0d1a15 54.2%, #1f4135 58.9%, #10221b 63%, #183428 66.4%,
-      #0b1612 70.5%, #20443a 75.1%, #0e1d17 79.2%, #1b392d 82.8%, #0d1a15 86.6%, #1e4034 91%,
-      #10211a 95.2%, #163025 100%);
+  transition: transform 1500ms var(--ease-in-out), clip-path 1500ms var(--ease-in-out);
 }
-.curtain--l { left: 0; transform-origin: left center; box-shadow: inset -30px 0 40px -30px rgba(0, 0, 0, 0.8); }
-.curtain--r { right: 0; transform-origin: right center; box-shadow: inset 30px 0 40px -30px rgba(0, 0, 0, 0.8); }
+/* Closed: many fine pleats hanging flat from the rings */
+.curtain::before,
+.curtain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: opacity 1200ms var(--ease-in-out);
+}
+.curtain::before {
+  opacity: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0, transparent 16px, rgba(240, 213, 150, 0.08) 18%, transparent 40%, transparent 72%, rgba(0, 0, 0, 0.42)),
+    linear-gradient(90deg,
+      #0a2219 0%, #1f4f3f 3.2%, #0e2a20 6.6%, #29604d 10.8%, #0f2c22 14.6%, #215141 18.2%,
+      #0b241b 22.5%, #265a48 26.8%, #103023 30.4%, #1d4a3a 33.8%, #0a2219 37.9%, #2b634f 42.6%,
+      #0f2c22 46.8%, #214f3f 50.4%, #0c261d 54.2%, #275b49 58.9%, #103023 63%, #1e4b3b 66.4%,
+      #0a2219 70.5%, #29604d 75.1%, #0e2a20 79.2%, #225243 82.8%, #0c261d 86.6%, #265a48 91%,
+      #103023 95.2%, #1c4838 100%);
+}
+/* Open: the same cloth gathered into a few deep, rounded folds.
+   Drawn wide so the scaleX squeeze lands them at a real fold width. */
+.curtain::after {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0, transparent 16px, rgba(240, 213, 150, 0.1) 16%, transparent 38%, transparent 70%, rgba(0, 0, 0, 0.45)),
+    linear-gradient(90deg,
+      #061610 0%, #163e30 5%, #2f6a56 10%, #1c4a3b 15%, #071811 22%,
+      #174033 27%, #2c6552 31.5%, #1a4637 36%, #061610 41%,
+      #184234 46.5%, #30705b 52%, #1d4b3c 57%, #071811 62%,
+      #163e30 66.5%, #2a624f 71%, #1a4536 75.5%, #061610 80%,
+      #174033 85%, #2f6a56 90%, #1c4a3b 95%, #0a1f17 100%);
+}
+.curtain-closed .curtain::before { opacity: 1; }
+.curtain-closed .curtain::after { opacity: 0; }
+.curtain--l {
+  left: 0;
+  transform-origin: left center;
+  clip-path: polygon(0 0, 100% 0, 100% 28%, 60% 56%, 100% 84%, 100% 100%, 0 100%);
+}
+.curtain--r {
+  right: 0;
+  transform-origin: right center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 84%, 40% 56%, 0 28%);
+}
 .curtain-closed .curtain { transform: scaleX(1); }
+.curtain-closed .curtain--l { clip-path: polygon(0 0, 100% 0, 100% 28%, 100% 56%, 100% 84%, 100% 100%, 0 100%); }
+.curtain-closed .curtain--r { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 84%, 0 56%, 0 28%); }
+/* Brass holdback around the gathered curtain */
+.curtain__tie {
+  position: absolute;
+  top: 56%;
+  height: 10px;
+  margin-top: -5px;
+  z-index: 1;
+  background: var(--brass-grad);
+  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.6);
+  transition: opacity 500ms ease 1100ms;
+}
+.curtain--l .curtain__tie { left: 0; right: 36%; }
+.curtain--r .curtain__tie { left: 36%; right: 0; }
+.curtain-closed .curtain__tie { opacity: 0; transition-delay: 0s; }
 
 .hero__inner {
   position: relative;
@@ -515,6 +568,18 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
   perspective: 1500px;
   transform-style: preserve-3d;
 }
+.triptych::before {
+  /* the cabin lamp: a pool of warm light falling onto the frame tops */
+  content: "";
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  top: -34%;
+  height: 64%;
+  background: radial-gradient(closest-side, rgba(255, 226, 170, 0.2), rgba(255, 226, 170, 0.06) 60%, transparent);
+  pointer-events: none;
+  z-index: -1;
+}
 .triptych::after {
   /* the pool of shadow on the cabin floor */
   content: "";
@@ -545,6 +610,8 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
   position: absolute;
   inset: 7px;
   background:
+    linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%),
+    linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%),
     radial-gradient(80% 45% at 50% 0%, rgba(255, 238, 200, 0.42), transparent 70%),
     linear-gradient(90deg,
       rgba(12, 28, 22, 0.55) 0%, rgba(40, 80, 66, 0.2) 9%, rgba(12, 28, 22, 0.5) 17%, rgba(46, 90, 74, 0.18) 27%,
@@ -554,6 +621,10 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
 }
 .glass--left::before, .glass--right::before {
   background:
+    linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%),
+    linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%),
+    linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%),
+    linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08)),
     radial-gradient(80% 45% at 50% 0%, rgba(255, 238, 200, 0.3), transparent 70%),
     linear-gradient(90deg,
@@ -624,7 +695,6 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
 }
 
 /* ---------- Suits: the rail ---------- */
-.suits { background: var(--velvet-900); }
 .suits__head { display: grid; gap: 1.4rem; max-width: 40rem; }
 
 .garments { position: relative; margin-top: clamp(3.5rem, 7vw, 5.5rem); padding-top: 22px; }
@@ -665,7 +735,20 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
   width: 2px;
   height: 60px;
   margin-left: -1px;
+  z-index: 2;
   background: linear-gradient(180deg, var(--brass-hi), var(--brass-lo));
+}
+.garment__hook::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 96px;
+  height: 9px;
+  margin-left: -48px;
+  border-radius: 2px;
+  background: var(--brass-grad);
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.6);
 }
 .garment__hook::before {
   content: "";
@@ -685,11 +768,12 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
   border-radius: var(--radius-frame);
   overflow: hidden;
   background:
+    radial-gradient(30% 7% at 50% 0%, rgba(0, 0, 0, 0.45), transparent),
     linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0) 22%, rgba(255, 255, 255, 0.05) 48%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.38)),
     linear-gradient(180deg, rgba(255, 244, 214, 0.08), rgba(0, 0, 0, 0.18)),
     url("../img/twill.jpg") 0 0 / 240px 240px,
     var(--cloth);
-  background-blend-mode: normal, normal, soft-light, normal;
+  background-blend-mode: normal, normal, normal, soft-light, normal;
   box-shadow: 0 34px 60px -34px rgba(0, 0, 0, 0.9);
 }
 .garment--lead .garment__cloth { aspect-ratio: 3 / 3.7; }
@@ -728,9 +812,7 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
 
 /* ---------- Wedding ---------- */
 .wedding {
-  background:
-    radial-gradient(60% 50% at 22% 30%, rgba(240, 213, 150, 0.1), transparent 70%),
-    var(--velvet-950);
+  background: radial-gradient(60% 50% at 22% 30%, rgba(240, 213, 150, 0.1), transparent 70%);
 }
 .wedding__grid {
   display: grid;
@@ -796,7 +878,6 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
 }
 
 /* ---------- Advice: three beats ---------- */
-.advice { background: var(--velvet-900); }
 .beats { display: grid; gap: clamp(2.4rem, 5vw, 4rem); }
 .beat {
   position: relative;
@@ -826,7 +907,6 @@ html[data-lang-pending] [data-i18n] { opacity: 0; }
 .beat__note { grid-column: 2; margin-top: 0.9rem; color: var(--lamp-2); max-width: 40ch; }
 
 /* ---------- Reviews ---------- */
-.reviews { background: var(--velvet-950); }
 .reviews__grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -867,7 +947,6 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 }
 
 /* ---------- Visit ---------- */
-.visit { background: var(--velvet-900); }
 .visit__grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -878,61 +957,30 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 .visit__copy { grid-column: 1 / span 5; display: grid; gap: 2.6rem; justify-items: start; }
 .visit__info { grid-column: 7 / span 6; display: grid; gap: 2.2rem; }
 
-/* The brass door plate */
+/* The shop sign: engraved caps inside a double brass hairline, straight on the velvet */
 .plate {
   position: relative;
   width: min(100%, 22rem);
   padding: 2.2rem 2.4rem 2rem;
-  border-radius: var(--radius-frame);
-  background-color: var(--brass);
-  background-image:
-    linear-gradient(115deg, rgba(255, 250, 230, 0.35) 0%, transparent 24%, transparent 60%, rgba(255, 250, 230, 0.18) 72%, transparent 84%),
-    var(--brass-grad);
-  color: var(--brass-ink);
-  box-shadow: inset 0 1px 0 rgba(255, 248, 222, 0.8), inset 0 -2px 0 rgba(94, 71, 25, 0.45), 0 22px 40px -22px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(216, 178, 100, 0.75);
+  outline: 1px solid rgba(216, 178, 100, 0.35);
+  outline-offset: -7px;
+  color: var(--brass);
 }
-.plate__name, .plate__sub, .plate__addr {
-  font-stretch: 125%;
-  text-transform: uppercase;
-  text-shadow: 0 1px 0 rgba(255, 246, 214, 0.65), 0 -1px 0 rgba(70, 52, 16, 0.35);
-}
-.plate__name { font-weight: 700; font-size: 1.7rem; letter-spacing: 0.34em; line-height: 1; }
+.plate__name, .plate__sub, .plate__addr { font-stretch: 125%; text-transform: uppercase; }
+.plate__name { font-weight: 700; font-size: 1.7rem; letter-spacing: 0.34em; line-height: 1; color: var(--lamp); }
 .plate__sub { margin-top: 0.55rem; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.42em; }
 .plate__addr {
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(94, 71, 25, 0.35);
-  box-shadow: 0 -1px 0 rgba(255, 246, 214, 0.4);
+  border-top: 1px solid rgba(216, 178, 100, 0.35);
   font-style: normal;
   font-weight: 600;
   font-size: 0.8rem;
   letter-spacing: 0.2em;
   line-height: 1.7;
+  color: var(--lamp-2);
 }
-.plate__screw {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #fbe9b8, #a17c36 70%);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
-}
-.plate__screw::after {
-  content: "";
-  position: absolute;
-  left: 1px;
-  right: 1px;
-  top: 50%;
-  height: 1px;
-  background: rgba(70, 52, 16, 0.7);
-  transform: rotate(-35deg);
-}
-.plate__screw--tl { top: 10px; left: 10px; }
-.plate__screw--tr { top: 10px; right: 10px; }
-.plate__screw--bl { bottom: 10px; left: 10px; }
-.plate__screw--br { bottom: 10px; right: 10px; }
-.plate__screw--tr::after { transform: rotate(20deg); }
-.plate__screw--bl::after { transform: rotate(70deg); }
 
 .facts { display: grid; gap: 0; border-top: 1px solid var(--lamp-line); }
 .fact {
@@ -995,22 +1043,25 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 
 /* ---------- Social close ---------- */
 .social {
-  background:
-    radial-gradient(60% 60% at 50% 110%, rgba(240, 213, 150, 0.12), transparent 70%),
-    var(--velvet-950);
-  text-align: left;
+  background: radial-gradient(60% 60% at 50% 110%, rgba(240, 213, 150, 0.12), transparent 70%);
 }
+.social__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 2rem;
+  align-items: end;
+}
+.social__title { grid-column: 1 / span 8; margin: 0; }
+.social__side { grid-column: 9 / span 4; display: grid; gap: 1.4rem; justify-items: end; text-align: right; padding-bottom: 0.9rem; }
 .social__lead {
-  max-width: 24ch;
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.45rem);
-  line-height: 1.45;
+  max-width: 26ch;
   color: var(--lamp-2);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.5;
 }
 .handle {
   display: inline-block;
-  margin-top: 1.2rem;
   font-family: var(--font-display);
   font-weight: 430;
   font-size: clamp(2.6rem, 0.8rem + 7.4vw, 6rem);
@@ -1027,11 +1078,11 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
   .handle:hover { color: var(--brass-hi); }
   .handle:hover::after { transform: scaleX(1); }
 }
-.social__links { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.social__links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.9rem; }
 
 /* ---------- Footer ---------- */
 .footer {
-  background: var(--velvet-975);
+  background: rgba(4, 14, 10, 0.62);
   border-top: 1px solid rgba(216, 178, 100, 0.18);
   padding-block: 3rem calc(3rem + env(safe-area-inset-bottom));
   color: var(--lamp-2);
@@ -1050,7 +1101,6 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 .dock { display: none; }
 
 /* ---------- Legal pages ---------- */
-.legal-page { background: var(--velvet-900); }
 .legal-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--nav-h); padding-block: 1rem; }
 .legal { max-width: calc(44rem + var(--gutter) * 2); padding-block: 3rem 6rem; }
 .legal h2 {
@@ -1074,7 +1124,13 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 }
 
 @media (max-width: 900px) {
-  :root { --gather: 0.07; --nav-h: 64px; }
+  :root { --gather: 0.09; --nav-h: 64px; }
+  /* Fewer, wider folds when the gathered curtain is only a finger wide */
+  .curtain::after {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0, transparent 16px, rgba(240, 213, 150, 0.1) 16%, transparent 38%, transparent 70%, rgba(0, 0, 0, 0.45)),
+      linear-gradient(90deg, #061610 0%, #1a4638 14%, #2f6a56 26%, #1a4637 38%, #061610 50%, #1b4739 64%, #30705b 76%, #1c4a3b 88%, #0a1f17 100%);
+  }
   .nav__links, .nav__call { display: none; }
   .nav__menu { display: grid; }
   .nav__actions { margin-left: auto; }
@@ -1108,7 +1164,11 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
   .garment { flex: 0 0 min(72vw, 300px); scroll-snap-align: start; }
   .garment--lead .garment__cloth { aspect-ratio: 3 / 4; }
 
-  .wedding__grid, .reviews__grid, .visit__grid { grid-template-columns: 1fr; row-gap: 3rem; }
+  .wedding__grid, .reviews__grid, .visit__grid, .social__grid { grid-template-columns: 1fr; row-gap: 3rem; }
+  .social__grid { row-gap: 1.6rem; }
+  .social__title, .social__side { grid-column: 1; }
+  .social__side { justify-items: start; text-align: left; padding-bottom: 0; }
+  .social__links { justify-content: flex-start; }
   .arch, .wedding__copy, .reviews__score, .quotes, .visit__copy, .visit__info { grid-column: 1; }
   .arch { width: min(82%, 360px); }
   .rail__rings i { width: 12px; height: 12px; border-width: 2px; --gap: max(3px, calc(50vw * var(--gather) / 8)); }
@@ -1128,7 +1188,7 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
     grid-template-columns: 1.4fr 1fr;
     gap: 0.6rem;
     padding: 0.7rem var(--gutter) calc(0.7rem + env(safe-area-inset-bottom));
-    background: rgba(9, 19, 15, 0.9);
+    background: rgba(8, 26, 20, 0.92);
     -webkit-backdrop-filter: blur(14px) saturate(1.2);
     backdrop-filter: blur(14px) saturate(1.2);
     border-top: 1px solid rgba(216, 178, 100, 0.2);

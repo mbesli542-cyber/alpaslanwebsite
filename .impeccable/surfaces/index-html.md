@@ -13,7 +13,7 @@ Scope: single-page home, visitor mode Persuade. Audience: men in Mannheim choosi
 
 THESIS: The site is the fitting room. The visitor steps behind the curtain and sees himself in a three-way mirror before he ever sees a catalogue. It refuses the category default of black/white full-bleed model photo with a thin serif and an "Entdecken" button.
 
-OWN-WORLD: Drenched bottle-green velvet owns every surface; polished brass for the rail, rings, hooks and the primary action; silvered mirror glass for every image frame; warm lamplight ivory for text. Tall condensed display lettering (full-length mirror, pleats, long tailored lines) against wide engraved small caps (brass door plate). Hairline brass frames, no cards.
+OWN-WORLD: Drenched bottle-green velvet owns every surface as one continuous crushed-velvet ground; polished brass for the rail, rings, hooks and the primary action; silvered mirror glass for every image frame; warm lamplight ivory for text. Tall condensed display lettering (full-length mirror, pleats, long tailored lines) against wide extended grotesk caps, the lettering engraved on a modern brass nameplate (amended after the finish review: deliberate, no third face). Hairline brass frames, no cards.
 
 STORY: The visitor understands this is a menswear store in Mannheim for suits and weddings, believes the advice is personal and fast because real customers say so, and calls or routes to F1 8.
 

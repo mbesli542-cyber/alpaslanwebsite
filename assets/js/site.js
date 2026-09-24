@@ -40,7 +40,7 @@
     suitWeddingText: 'Damat ve yakınları için.',
     altGroom: 'Damatlık takım giymiş damat',
     weddingTitle: 'Herkesin size bakacağı o gün için.',
-    weddingLead: 'Nikâh, düğün ya da kına gecesi: Damadı, sağdıcı ve aileyi birbirine uyumlu giydiriyoruz. En iyisi birlikte gelin.',
+    weddingLead: 'Nikâh, düğün ya da kına gecesi: Damadı, sağdıcı ve ailenin erkeklerini birbirine uyumlu giydiriyoruz. En iyisi birlikte gelin.',
     bringTitle: 'Gelmeden önce hazırlayın',
     bring1: 'Düğün tarihiniz',
     bring2: 'Düğünün renkleri ya da teması',
@@ -65,7 +65,7 @@
     factHours: 'Çalışma saatleri',
     hoursLink: 'Güncel saatler Google’da',
     altShop: 'PARLA Herrenmode’un F1 8’deki mağazası',
-    socialLead: 'Yeni takımları ilk önce Instagram ve TikTok hesabımızda görün.',
+    socialLead: 'Mağazadan kareler Instagram ve TikTok’ta.',
     legalLabel: 'Yasal bilgiler',
     privacy: 'Gizlilik',
   };
