@@ -70,7 +70,7 @@ label { display: grid; gap: 0.35rem; font-size: 0.9rem; font-weight: 600; color:
 .plist, .olist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
 .prow { width: 100%; display: grid; grid-template-columns: 64px 1fr auto; gap: 1rem; align-items: center; padding: 0.6rem; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); cursor: pointer; text-align: left; }
 .prow:hover { border-color: var(--green-2); }
-.prow img, .noimg { width: 64px; height: 84px; object-fit: cover; border-radius: 6px; background: #e7e7df; display: grid; place-items: center; font-size: 0.7rem; color: var(--ink-2); }
+.prow img, .noimg { width: 64px; height: 84px; object-fit: contain; border-radius: 6px; background: #e7e7df; display: grid; place-items: center; font-size: 0.7rem; color: var(--ink-2); }
 .prow__main { display: grid; gap: 0.25rem; min-width: 0; }
 .prow__main .muted { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .prow__end { display: grid; gap: 0.3rem; justify-items: end; }
@@ -102,7 +102,7 @@ legend { font-weight: 700; padding: 0 0.4rem; }
 .size button { height: 2.8rem; border: 1px solid #e3b9b0; background: #fff; color: var(--red); border-radius: 8px; cursor: pointer; font-size: 1.2rem; }
 .images { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.6rem; }
 .img { position: relative; margin: 0; aspect-ratio: 3 / 4; border-radius: 8px; overflow: hidden; background: #e7e7df; }
-.img img { width: 100%; height: 100%; object-fit: cover; }
+.img img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
 .img__wait { position: absolute; inset: 0; display: grid; place-items: center; font-size: 0.8rem; color: var(--ink-2); }
 .img__tools { position: absolute; inset: auto 0 0; display: flex; justify-content: space-between; padding: 0.3rem; background: linear-gradient(transparent, rgba(0,0,0,.55)); }
 .img__tools button { width: 2rem; height: 2rem; border: 0; border-radius: 999px; background: rgba(255,255,255,.92); cursor: pointer; font-weight: 700; }

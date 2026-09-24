@@ -157,15 +157,31 @@
     if (d) { images.splice(Number(d.dataset.delImg), 1); renderImages(); }
   });
 
-  // Resize on the phone before upload: max 1800px, JPEG ~85%. Keeps uploads fast and under the size limit.
+  // Before upload, every photo is placed on the same 3:4 portrait canvas (1500×2000) without cropping.
+  // Free space is filled with the photo's own background colour (averaged from its corners), so heads and shoes are never cut off.
+  const W = 1500, H = 2000;
   const shrink = (file) => new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => {
-      const scale = Math.min(1, 1800 / Math.max(img.width, img.height));
+      const probe = document.createElement('canvas');
+      probe.width = img.width; probe.height = img.height;
+      const pc = probe.getContext('2d', { willReadFrequently: true });
+      pc.drawImage(img, 0, 0);
+      const pts = [[2, 2], [img.width - 3, 2], [2, img.height - 3], [img.width - 3, img.height - 3]];
+      const rgb = [0, 0, 0];
+      pts.forEach(([x, y]) => { const d = pc.getImageData(x, y, 1, 1).data; rgb[0] += d[0]; rgb[1] += d[1]; rgb[2] += d[2]; });
+      const bg = `rgb(${rgb.map((v) => Math.round(v / 4)).join(',')})`;
+
+      const scale = Math.min(W / img.width, H / img.height);
+      const w = Math.round(img.width * scale), h = Math.round(img.height * scale);
       const c = document.createElement('canvas');
-      c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
-      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-      c.toBlob((b) => (b ? resolve(b) : reject(new Error('Fotoğraf işlenemedi.'))), 'image/jpeg', 0.85);
+      c.width = W; c.height = H;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, W, H);
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, Math.round((W - w) / 2), Math.round((H - h) / 2), w, h);
+      c.toBlob((b) => (b ? resolve(b) : reject(new Error('Fotoğraf işlenemedi.'))), 'image/jpeg', 0.86);
       URL.revokeObjectURL(img.src);
     };
     img.onerror = () => reject(new Error('Fotoğraf okunamadı.'));
