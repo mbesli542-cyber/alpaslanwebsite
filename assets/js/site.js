@@ -405,6 +405,31 @@
   });
 })();
 
+/* ---------- Arrival: the mirrors stay empty until the curtain has opened, then he steps in ---------- */
+const whenArrived = (() => {
+  const triptych = document.querySelector('[data-mirror]');
+  const root = document.documentElement;
+  const waiting = [];
+  let arrived = false;
+  const arrive = () => {
+    if (arrived) return;
+    arrived = true;
+    if (triptych) triptych.classList.add('is-arrived');
+    waiting.splice(0).forEach((fn) => fn());
+  };
+  const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900;
+  const start = () => window.setTimeout(arrive, root.classList.contains('curtain-seen') ? 150 : delay);
+  if (root.classList.contains('curtain-closed')) {
+    const mo = new MutationObserver(() => {
+      if (!root.classList.contains('curtain-closed')) { mo.disconnect(); window.setTimeout(start, 1100); }
+    });
+    mo.observe(root, { attributes: true, attributeFilter: ['class'] });
+  } else {
+    start();
+  }
+  return (fn) => (arrived ? fn() : waiting.push(fn));
+})();
+
 /* ---------- Turning video: one 360° turn, shown in all three mirrors at different angles ---------- */
 (() => {
   'use strict';
@@ -459,7 +484,29 @@
     align(0);
     triptych.classList.add('has-video', 'is-turning');
     videos.forEach((vv) => vv.classList.add('is-on'));
-    playAll();
+    whenArrived(() => {
+      const intro = triptych.dataset.videoIntro;
+      if (!intro) { playAll(); return; }
+      // He walks in first: a one-off clip in every mirror (wings mirrored), then the turning loop takes over.
+      const intros = panels.map((p, i) => {
+        const v = document.createElement('video');
+        v.className = 'pose pose--video pose--intro is-on' + (i === 1 ? '' : ' pose--flip');
+        v.muted = true; v.playsInline = true; v.preload = 'auto'; v.src = intro;
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+        p.el.appendChild(v);
+        return v;
+      });
+      videos.forEach((vv) => vv.classList.remove('is-on'));
+      const finish = () => {
+        align(0);
+        videos.forEach((vv) => vv.classList.add('is-on'));
+        playAll();
+        intros.forEach((v) => { v.classList.remove('is-on'); window.setTimeout(() => v.remove(), 600); });
+      };
+      intros[1].addEventListener('ended', finish, { once: true });
+      intros[1].addEventListener('error', finish, { once: true });
+      intros.forEach((v) => { const r = v.play(); if (r && r.catch) r.catch(finish); });
+    });
   }, { once: true }));
   videos.forEach((v) => v.addEventListener('error', () => videos.forEach((vv) => vv.remove()), { once: true }));
 

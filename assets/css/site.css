@@ -1284,3 +1284,7 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 }
 .triptych.has-video .pose:not(.pose--video) { display: none; }
 .pose--video { filter: none; transform: none; transition: opacity 500ms ease; }
+
+/* Empty mirrors until he steps in front of them after the curtain opens */
+.js .triptych:not(.is-arrived) .pose { opacity: 0 !important; transform: translateX(16%) !important; filter: blur(4px) !important; }
+.js .triptych .pose--video { transition: opacity 900ms ease, transform 1400ms var(--ease-out), filter 900ms ease; }
