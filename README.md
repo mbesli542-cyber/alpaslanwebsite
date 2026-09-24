@@ -46,7 +46,7 @@ Bu depo `.claude/skills/` altında kurulu tasarım skill'lerini içerir (emilkow
 Shop, sepet, Stripe ödemesi ve yönetim paneli (`/admin.html`) bu depoda hazır. Çalışması için Vercel'de bir kez şu ayarlar yapılmalı:
 
 ### 1. Fotoğraf deposu (Vercel Blob)
-Vercel → projeniz → **Storage** → **Create Database** → **Blob** → projeye bağlayın. `BLOB_READ_WRITE_TOKEN` otomatik eklenir.
+Vercel → projeniz → **Storage** → **Create Database** → **Blob** → erişim olarak **Public** seçin → projeye bağlayın. Vercel `BLOB_STORE_ID` (ya da eski projelerde `BLOB_READ_WRITE_TOKEN`) değişkenini otomatik ekler.
 
 ### 2. Veritabanı (Upstash Redis, ücretsiz plan yeterli)
 Vercel → projeniz → **Storage** → **Marketplace** → **Upstash for Redis** → projeye bağlayın. `KV_REST_API_URL` ve `KV_REST_API_TOKEN` otomatik eklenir.

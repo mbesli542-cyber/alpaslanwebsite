@@ -1,7 +1,7 @@
 import { json, readJson, safe } from '../../lib/http.js';
 import { requireAdmin } from '../../lib/auth.js';
 import { getSettings, saveSettings } from '../../lib/store.js';
-import { redisUrl, redisToken, blobToken, storageVarNames } from '../../lib/env.js';
+import { redisUrl, redisToken, hasBlob, storageVarNames } from '../../lib/env.js';
 
 const toCents = (v, fallback) => {
   const n = Math.round(Number(v));
@@ -14,7 +14,7 @@ export const GET = safe(async (request) => {
     settings: await getSettings(),
     setup: {
       database: Boolean(redisUrl() && redisToken()),
-      images: Boolean(blobToken()),
+      images: hasBlob(),
       stripe: Boolean(process.env.STRIPE_SECRET_KEY),
       webhook: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
       testMode: (process.env.STRIPE_SECRET_KEY || '').startsWith('sk_test_'),
