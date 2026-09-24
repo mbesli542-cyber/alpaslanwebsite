@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-24T10:59:10+00:00",
+  "title": "Design System: PARLA Herrenmode",
+  "extensions": {
+    "colorMeta": {
+      "brass": {
+        "role": "primary",
+        "displayName": "Polished Brass",
+        "canonical": "oklch(78.1% 0.106 83.9)",
+        "tonalRamp": [
+          "#110a00",
+          "#312200",
+          "#553e00",
+          "#7c5b02",
+          "#a07c2b",
+          "#c59f51",
+          "#eac375",
+          "#ffecc9"
+        ]
+      },
+      "brass-hi": {
+        "role": "primary",
+        "displayName": "Brass Highlight",
+        "canonical": "oklch(88.1% 0.086 87.4)",
+        "tonalRamp": [
+          "#110a00",
+          "#302300",
+          "#533f01",
+          "#765e1e",
+          "#987f42",
+          "#bca265",
+          "#e1c688",
+          "#ffedc4"
+        ]
+      },
+      "brass-lo": {
+        "role": "primary",
+        "displayName": "Brass Shadow",
+        "canonical": "oklch(55.6% 0.091 80.3)",
+        "tonalRamp": [
+          "#120900",
+          "#332100",
+          "#573c01",
+          "#7c5b19",
+          "#9f7c3e",
+          "#c39f61",
+          "#e8c384",
+          "#ffeccd"
+        ]
+      },
+      "velvet-975": {
+        "role": "neutral",
+        "displayName": "Velvet Ink",
+        "canonical": "oklch(20.0% 0.027 169.6)",
+        "tonalRamp": [
+          "#010f09",
+          "#172923",
+          "#344740",
+          "#52665f",
+          "#738880",
+          "#95aba2",
+          "#b9cfc6",
+          "#def5eb"
+        ]
+      },
+      "velvet-950": {
+        "role": "neutral",
+        "displayName": "Deep Velvet",
+        "canonical": "oklch(24.5% 0.036 170.5)",
+        "tonalRamp": [
+          "#000f09",
+          "#112b23",
+          "#2e483f",
+          "#4d685e",
+          "#6d8a7f",
+          "#90ada2",
+          "#b3d1c6",
+          "#d8f7eb"
+        ]
+      },
+      "velvet-900": {
+        "role": "neutral",
+        "displayName": "Bottle-Green Velvet",
+        "canonical": "oklch(30.9% 0.049 169.3)",
+        "tonalRamp": [
+          "#000f09",
+          "#052c21",
+          "#254a3e",
+          "#456a5d",
+          "#658c7d",
+          "#87afa0",
+          "#abd4c4",
+          "#d0fae9"
+        ]
+      },
+      "velvet-850": {
+        "role": "neutral",
+        "displayName": "Plush Velvet",
+        "canonical": "oklch(34.1% 0.054 168.6)",
+        "tonalRamp": [
+          "#000f09",
+          "#002d20",
+          "#214b3d",
+          "#416b5c",
+          "#628d7c",
+          "#84b09f",
+          "#a8d5c3",
+          "#ccfbe8"
+        ]
+      },
+      "lamp": {
+        "role": "neutral",
+        "displayName": "Lamplight",
+        "canonical": "oklch(92.9% 0.027 87.9)",
+        "tonalRamp": [
+          "#100a01",
+          "#2a2416",
+          "#484132",
+          "#686150",
+          "#898271",
+          "#aca493",
+          "#d0c9b6",
+          "#f6eedb"
+        ]
+      },
+      "lamp-2": {
+        "role": "neutral",
+        "displayName": "Soft Lamplight",
+        "canonical": "oklch(81.1% 0.031 126.1)",
+        "tonalRamp": [
+          "#080d02",
+          "#212817",
+          "#3e4533",
+          "#5d6552",
+          "#7e8672",
+          "#a0a994",
+          "#c4cdb8",
+          "#e9f3dd"
+        ]
+      },
+      "lamp-3": {
+        "role": "neutral",
+        "displayName": "Dim Lamplight",
+        "canonical": "oklch(75.9% 0.030 140.5)",
+        "tonalRamp": [
+          "#050e04",
+          "#1d291b",
+          "#394637",
+          "#586656",
+          "#798776",
+          "#9baa98",
+          "#bfcebc",
+          "#e4f4e1"
+        ]
+      },
+      "lamp-line": {
+        "role": "neutral",
+        "displayName": "Brass Hairline",
+        "canonical": "rgba(216, 178, 100, 0.26)",
+        "tonalRamp": [
+          "#110a00",
+          "#312200",
+          "#553e00",
+          "#7c5b02",
+          "#a07c2b",
+          "#c59f51",
+          "#eac375",
+          "#ffecc9"
+        ],
+        "note": "Brass at 26% alpha; ramp shows the underlying brass hue."
+      },
+      "cloth-navy": {
+        "role": "neutral",
+        "displayName": "Midnight Worsted",
+        "canonical": "oklch(28.6% 0.052 262.1)",
+        "tonalRamp": [
+          "#020920",
+          "#17253e",
+          "#33425e",
+          "#51627f",
+          "#7283a2",
+          "#94a6c6",
+          "#b7caec",
+          "#e6effe"
+        ],
+        "note": "Garment material only, always under assets/img/twill.jpg (soft-light, 240px). Never a UI colour."
+      },
+      "cloth-charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal Flannel",
+        "canonical": "oklch(33.4% 0.009 248.1)",
+        "tonalRamp": [
+          "#080c0f",
+          "#222629",
+          "#3e4247",
+          "#5d6266",
+          "#7e8388",
+          "#a1a6aa",
+          "#c5cacf",
+          "#eaeff4"
+        ],
+        "note": "Garment material only, always under assets/img/twill.jpg (soft-light, 240px). Never a UI colour."
+      },
+      "cloth-ivory": {
+        "role": "neutral",
+        "displayName": "Wedding Ivory",
+        "canonical": "oklch(90.5% 0.027 87.9)",
+        "tonalRamp": [
+          "#100a01",
+          "#2a2416",
+          "#484132",
+          "#686150",
+          "#898270",
+          "#aca492",
+          "#d0c9b6",
+          "#f6eedb"
+        ],
+        "note": "Garment material only, always under assets/img/twill.jpg (soft-light, 240px). Never a UI colour."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only, two lines with a manual break."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and legal page titles."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "The three advice beats, sentences set as headlines."
+      },
+      "handle": {
+        "displayName": "Handle",
+        "purpose": "The social handle as the closing line; breaks anywhere when narrow."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "Verbatim review excerpts with German quotation marks."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Garment names on the rail."
+      },
+      "menu-link": {
+        "displayName": "Menu Link",
+        "purpose": "Links in the full-screen mobile menu."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Phone number beside a call pill; lining tabular figures."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "One sentence under a heading, soft lamplight, max 34ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Notes and running text; 28-46ch on the home page, 65ch on legal pages."
+      },
+      "label": {
+        "displayName": "Engraved Label",
+        "purpose": "Button text and legal subheadings; uppercase, set via font-stretch: 125%."
+      },
+      "label-sm": {
+        "displayName": "Engraved Label Small",
+        "purpose": "List terms, checklist subheading, review sources; uppercase."
+      },
+      "nav-link": {
+        "displayName": "Nav Link",
+        "purpose": "Desktop nav links; uppercase at font-stretch: 112%."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "Typeset PARLA wordmark (no logo file exists); uppercase."
+      },
+      "wordmark-sub": {
+        "displayName": "Wordmark Line",
+        "purpose": "HERRENMODE under the wordmark, in brass; uppercase."
+      },
+      "woven-label": {
+        "displayName": "Woven Label",
+        "purpose": "PARLA sewn into each garment lining; uppercase."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hanging-mirror",
+        "value": "0 30px 60px -30px rgba(0, 0, 0, 0.85), inset 0 0 0 1px rgba(94, 71, 25, 0.35)",
+        "purpose": "The three mirror panels; inset line darkens the frame's inner edge."
+      },
+      {
+        "name": "hanging-garment",
+        "value": "0 34px 60px -34px rgba(0, 0, 0, 0.9)",
+        "purpose": "Cloth hanging on the rail."
+      },
+      {
+        "name": "hanging-arch",
+        "value": "0 40px 80px -40px rgba(0, 0, 0, 0.9)",
+        "purpose": "The wedding arch mirror."
+      },
+      {
+        "name": "hardware-rod",
+        "value": "0 3px 6px -2px rgba(0, 0, 0, 0.6)",
+        "purpose": "Curtain rail rod."
+      },
+      {
+        "name": "hardware-rail",
+        "value": "0 4px 8px -3px rgba(0, 0, 0, 0.7)",
+        "purpose": "Garment rail rod."
+      },
+      {
+        "name": "hardware-hanger",
+        "value": "0 3px 5px -1px rgba(0, 0, 0, 0.6)",
+        "purpose": "Hanger bar under each hook."
+      },
+      {
+        "name": "hardware-holdback",
+        "value": "0 4px 6px -2px rgba(0, 0, 0, 0.6)",
+        "purpose": "Brass holdback around the gathered curtain."
+      },
+      {
+        "name": "ring",
+        "value": "inset 0 1px 0 rgba(255, 240, 200, 0.5), 0 2px 3px rgba(0, 0, 0, 0.5)",
+        "purpose": "Curtain rings; hook and beat rings keep only the inset highlight."
+      },
+      {
+        "name": "polished-pill",
+        "value": "inset 0 1px 0 rgba(255, 246, 214, 0.65), inset 0 -1px 0 rgba(94, 71, 25, 0.5), 0 6px 18px -8px rgba(0, 0, 0, 0.7)",
+        "purpose": "Brass button at rest."
+      },
+      {
+        "name": "polished-pill-hover",
+        "value": "inset 0 1px 0 rgba(255, 246, 214, 0.8), inset 0 -1px 0 rgba(94, 71, 25, 0.5), 0 10px 22px -10px rgba(0, 0, 0, 0.8)",
+        "purpose": "Brass button on hover (fine pointers), with filter: brightness(1.07)."
+      },
+      {
+        "name": "hairline-outline",
+        "value": "inset 0 0 0 1px rgba(239, 231, 212, 0.22)",
+        "purpose": "Ghost pill outline; the language track uses 0.2."
+      },
+      {
+        "name": "sewn-label",
+        "value": "0 2px 4px rgba(0, 0, 0, 0.35)",
+        "purpose": "Woven label on the cloth."
+      }
+    ],
+    "materials": [
+      {
+        "name": "velvet-ground",
+        "value": "background-color: #12382c; background-image: url(\"assets/img/velvet.jpg\"); background-size: 1024px 1024px; background-blend-mode: soft-light;",
+        "purpose": "The single page ground, on body only. velvet.jpg is procedural (tools/make-velvet.py), grayscale, tileable."
+      },
+      {
+        "name": "brass-hanging",
+        "value": "linear-gradient(180deg, #f3dca2 0%, #d8b264 38%, #a78139 72%, #c9a153 100%)",
+        "purpose": "--brass-grad: rods, hanger bars, holdback, primary pill."
+      },
+      {
+        "name": "brass-frame",
+        "value": "linear-gradient(90deg, #a8823a 0%, #e9cc88 30%, #cfa758 55%, #9c7732 80%, #d3ad60 100%)",
+        "purpose": "--brass-grad-x: mirror frames, arch, shopfront frame."
+      },
+      {
+        "name": "mirror-glass",
+        "value": "linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%), linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%), radial-gradient(80% 45% at 50% 0%, rgba(255, 238, 200, 0.42), transparent 70%), linear-gradient(180deg, #b7c2bb 0%, #8a9891 38%, #5c6b64 72%, #3e4b45 100%)",
+        "purpose": "Silvered glass (simplified; the build adds a layer of faint velvet pleat stripes): rail reflection near 5%, dark velvet edges, lamp highlight, silver body. Wings use a darker silver and an outer-edge shade."
+      },
+      {
+        "name": "garment-cloth",
+        "value": "radial-gradient(30% 7% at 50% 0%, rgba(0, 0, 0, 0.45), transparent), linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0) 22%, rgba(255, 255, 255, 0.05) 48%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.38)), linear-gradient(180deg, rgba(255, 244, 214, 0.08), rgba(0, 0, 0, 0.18)), url(\"assets/img/twill.jpg\") 0 0 / 240px 240px, var(--cloth)",
+        "purpose": "Fallback cloth for a garment slot; blend modes normal, normal, normal, soft-light, normal. twill.jpg is procedural (tools/make-twill.py)."
+      },
+      {
+        "name": "lamplight-pool",
+        "value": "radial-gradient(70% 55% at 62% 6%, rgba(240, 213, 150, 0.14), transparent 70%)",
+        "purpose": "Hero lamp; other sections may carry one pool at 0.10-0.14 alpha and nothing else."
+      },
+      {
+        "name": "fixed-bar-veil",
+        "value": "background: rgba(12, 38, 30, 0.9); backdrop-filter: blur(14px) saturate(1.2); border-bottom: 1px solid rgba(216, 178, 100, 0.16);",
+        "purpose": "Scrolled nav; the dock uses rgba(8, 26, 20, 0.92) with a 0.2 top hairline."
+      },
+      {
+        "name": "footer-veil",
+        "value": "background: rgba(4, 14, 10, 0.62); border-top: 1px solid rgba(216, 178, 100, 0.18);",
+        "purpose": "The only shade on the ground; the velvet still shows through."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "--ease-out: entrances, hover transforms, press, underline draw, image fade, sheen sweep, garment swing."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "--ease-in-out: things that travel across the screen (curtain, rings, pleat crossfade)."
+      },
+      {
+        "name": "ease-drawer",
+        "value": "cubic-bezier(0.32, 0.72, 0, 1)",
+        "purpose": "--ease-drawer: mobile menu sheet and bottom dock."
+      },
+      {
+        "name": "duration-press",
+        "value": "160ms",
+        "purpose": "Press feedback, scale(0.97)."
+      },
+      {
+        "name": "duration-crossfade",
+        "value": "180ms",
+        "purpose": "Language swap: opacity + blur(3px) out, swap, back in."
+      },
+      {
+        "name": "duration-state",
+        "value": "200ms",
+        "purpose": "Colour, background and arrow-nudge hover changes."
+      },
+      {
+        "name": "duration-nav",
+        "value": "300ms",
+        "purpose": "Nav turning solid."
+      },
+      {
+        "name": "duration-underline",
+        "value": "320ms",
+        "purpose": "Brass hairline underline drawn by scaleX."
+      },
+      {
+        "name": "duration-sheet",
+        "value": "360ms / 420ms / 460ms",
+        "purpose": "Dock slide; menu close / open."
+      },
+      {
+        "name": "duration-fade-in",
+        "value": "500ms",
+        "purpose": "Photo fading into its slot; holdback appearing (delayed 1100ms)."
+      },
+      {
+        "name": "duration-curtain",
+        "value": "1500ms",
+        "purpose": "Curtain gathering and rings bunching; pleats crossfade over 1200ms."
+      },
+      {
+        "name": "duration-sweep",
+        "value": "1600ms",
+        "purpose": "Mirror sheen sweep on open, staggered 350 / 450 / 550ms."
+      },
+      {
+        "name": "duration-swing",
+        "value": "1900ms",
+        "purpose": "Garments swing once on entering view, staggered 110ms, damped 2.6deg to 0."
+      },
+      {
+        "name": "stagger-menu",
+        "value": "140ms + 50ms * i",
+        "purpose": "Mobile menu links rising in."
+      },
+      {
+        "name": "press-scale",
+        "value": "scale(0.97)",
+        "purpose": "Active state of pills and the copy chip."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Curtain starts open, no swing, no sweep, no sheen tracking, sheets become 200ms opacity fades."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "desktop-tight",
+        "value": "1080px",
+        "purpose": "max-width: nav links gap 1.4rem, hero copy widens to 6 columns."
+      },
+      {
+        "name": "mobile",
+        "value": "900px",
+        "purpose": "max-width: nav 64px, menu button, one-column grids, rail becomes a scroll-snap strip, dock appears, curtain gathers to 9%."
+      },
+      {
+        "name": "small",
+        "value": "560px",
+        "purpose": "max-width: fact rows stack, beat rings hide, footer stacks."
+      }
+    ],
+    "provenance": {
+      "fonts": "Imbue (display, opsz + wght variable) and Archivo (body, wdth 62-125% + wght variable), SIL OFL, self-hosted in assets/fonts with licence files.",
+      "rasters": [
+        {
+          "file": "assets/img/velvet.jpg",
+          "origin": "Procedural, tools/make-velvet.py (numpy + Pillow spectral synthesis); origin embedded in the JPEG comment."
+        },
+        {
+          "file": "assets/img/twill.jpg",
+          "origin": "Procedural, tools/make-twill.py (numpy + Pillow 2/2 twill); origin embedded in the JPEG comment."
+        }
+      ],
+      "photos": "None shipped. Owner photos go in images/ under the names listed in images/README.md; slots fall back to their material."
+    }
+  },
+  "components": [
+    {
+      "name": "Brass Button",
+      "kind": "button",
+      "refersTo": "button-brass",
+      "description": "The primary pill: call or route only, one per action row.",
+      "html": "<a class=\"ds-btn-brass\" href=\"tel:+4962143728859\"><svg viewBox=\"0 0 256 256\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z\"/></svg><span>Anrufen</span></a>",
+      "css": ".ds-btn-brass { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 3.25rem; padding: 0.85rem 1.35rem; border: 0; border-radius: 999px; font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 125%; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)), background-color 200ms ease, color 200ms ease, box-shadow 200ms ease; color: var(--velvet-975, #081a14); background: var(--brass-grad, linear-gradient(180deg, #f3dca2 0%, #d8b264 38%, #a78139 72%, #c9a153 100%)); box-shadow: inset 0 1px 0 rgba(255, 246, 214, 0.65), inset 0 -1px 0 rgba(94, 71, 25, 0.5), 0 6px 18px -8px rgba(0, 0, 0, 0.7); } .ds-btn-brass svg { width: 1.15em; height: 1.15em; flex: none; } .ds-btn-brass:hover { filter: brightness(1.07); box-shadow: inset 0 1px 0 rgba(255, 246, 214, 0.8), inset 0 -1px 0 rgba(94, 71, 25, 0.5), 0 10px 22px -10px rgba(0, 0, 0, 0.8); } .ds-btn-brass:focus-visible { outline: 2px solid var(--brass-hi, #f0d596); outline-offset: 3px; } .ds-btn-brass:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Quiet partner pill: social links and the dock's route button.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\"><svg viewBox=\"0 0 256 256\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z\"/></svg><span>Route</span></a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 3.25rem; padding: 0.85rem 1.35rem; border: 0; border-radius: 999px; font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 125%; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)), background-color 200ms ease, color 200ms ease, box-shadow 200ms ease; color: var(--lamp, #efe7d4); background: rgba(239, 231, 212, 0.06); box-shadow: inset 0 0 0 1px rgba(239, 231, 212, 0.22); } .ds-btn-ghost svg { width: 1.15em; height: 1.15em; flex: none; } .ds-btn-ghost:hover { background: rgba(239, 231, 212, 0.11); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--brass-hi, #f0d596); outline-offset: 3px; } .ds-btn-ghost:active { transform: scale(0.97); }"
+    },
+    {
+      "name": "Arrow Link",
+      "kind": "button",
+      "refersTo": "link-arrow",
+      "description": "Tertiary action beside a brass pill, and outbound Google links.",
+      "html": "<a class=\"ds-link-arrow\" href=\"#\"><span>Route planen</span><svg viewBox=\"0 0 256 256\" width=\"15\" height=\"15\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z\"/></svg></a>",
+      "css": ".ds-link-arrow { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-size: 1.0625rem; font-weight: 500; color: var(--lamp, #efe7d4); text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: rgba(216, 178, 100, 0.55); text-underline-offset: 0.35em; transition: text-decoration-color 200ms ease, color 200ms ease; } .ds-link-arrow svg { width: 0.95em; height: 0.95em; color: var(--brass, #d8b264); transition: transform 200ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-link-arrow:hover { text-decoration-color: var(--brass, #d8b264); } .ds-link-arrow:hover svg { transform: translate(2px, -2px); } .ds-link-arrow:focus-visible { outline: 2px solid var(--brass-hi, #f0d596); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Language Toggle",
+      "kind": "chip",
+      "refersTo": "lang-toggle-active",
+      "description": "DE/TR switch in the nav; the pressed option is a lamplight pill.",
+      "html": "<div class=\"ds-lang\" role=\"group\" aria-label=\"Sprache wählen\"><button type=\"button\" class=\"ds-lang__btn\" aria-pressed=\"true\">DE</button><button type=\"button\" class=\"ds-lang__btn\" aria-pressed=\"false\">TR</button></div>",
+      "css": ".ds-lang { display: inline-flex; padding: 3px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgba(239, 231, 212, 0.2); } .ds-lang__btn { min-width: 2.5rem; min-height: 2.1rem; padding: 0 0.6rem; border: 0; border-radius: 999px; background: transparent; color: var(--lamp-3, #a7b6a4); font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 125%; font-weight: 600; font-size: 0.7rem; letter-spacing: 0.12em; cursor: pointer; transition: background-color 200ms ease, color 200ms ease; } .ds-lang__btn[aria-pressed=\"true\"] { background: var(--lamp, #efe7d4); color: var(--velvet-975, #081a14); } .ds-lang__btn[aria-pressed=\"false\"]:hover { color: var(--lamp, #efe7d4); } .ds-lang__btn:focus-visible { outline: 2px solid var(--brass-hi, #f0d596); outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-solid",
+      "description": "Fixed 68px bar: typeset wordmark, centred engraved links with a drawn brass underline, language toggle and small call pill. Shown in its scrolled (solid) state.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav__mark\" href=\"#\"><span class=\"ds-nav__name\">Parla</span><span class=\"ds-nav__sub\">Herrenmode</span></a><nav class=\"ds-nav__links\"><a href=\"#\">Anzüge</a><a href=\"#\">Hochzeit</a><a href=\"#\">Beratung</a><a href=\"#\">Besuch</a></nav><a class=\"ds-nav__call\" href=\"tel:+4962143728859\"><svg viewBox=\"0 0 256 256\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z\"/></svg><span>Anrufen</span></a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 2rem; height: 68px; padding-inline: clamp(1rem, 4vw, 3rem); background: rgba(12, 38, 30, 0.9); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); border-bottom: 1px solid rgba(216, 178, 100, 0.16); } .ds-nav__mark { display: inline-flex; flex-direction: column; gap: 0.3rem; line-height: 1; text-decoration: none; } .ds-nav__name { font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 125%; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.34em; margin-right: -0.34em; text-transform: uppercase; color: var(--lamp, #efe7d4); } .ds-nav__sub { font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 125%; font-weight: 500; font-size: 0.6875rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--brass, #d8b264); } .ds-nav__links { display: flex; gap: 2rem; margin-inline: auto; } .ds-nav__links a { position: relative; padding-block: 0.4rem; font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 112%; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--lamp-2, #bcc5b0); transition: color 200ms ease; } .ds-nav__links a::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--brass, #d8b264); transform: scaleX(0); transform-origin: left center; transition: transform 320ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-nav__links a:hover { color: var(--lamp, #efe7d4); } .ds-nav__links a:hover::after { transform: scaleX(1); } .ds-nav__links a:focus-visible { outline: 2px solid var(--brass-hi, #f0d596); outline-offset: 3px; border-radius: 4px; } .ds-nav__call { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.6rem; padding: 0.55rem 1.05rem; border-radius: 999px; color: var(--velvet-975, #081a14); background: var(--brass-grad, linear-gradient(180deg, #f3dca2 0%, #d8b264 38%, #a78139 72%, #c9a153 100%)); box-shadow: inset 0 1px 0 rgba(255, 246, 214, 0.65), inset 0 -1px 0 rgba(94, 71, 25, 0.5), 0 6px 18px -8px rgba(0, 0, 0, 0.7); font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 125%; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-nav__call svg { width: 1.15em; height: 1.15em; } .ds-nav__call:hover { filter: brightness(1.07); } .ds-nav__call:active { transform: scale(0.97); } .ds-nav__call:focus-visible { outline: 2px solid var(--brass-hi, #f0d596); outline-offset: 3px; }"
+    },
+    {
+      "name": "Three-way Mirror",
+      "kind": "custom",
+      "refersTo": "mirror-frame",
+      "description": "Signature: three brass-framed silvered panels in CSS 3D, wings turned 24deg; a sheen band crosses the glass on hover. Shown with the material fallback (no photo).",
+      "html": "<div class=\"ds-mirror\"><figure class=\"ds-glass ds-glass--left\"></figure><figure class=\"ds-glass ds-glass--center\"></figure><figure class=\"ds-glass ds-glass--right\"></figure></div>",
+      "css": ".ds-mirror { display: flex; gap: 5px; width: min(100%, 420px); aspect-ratio: 1.02; perspective: 1500px; transform-style: preserve-3d; margin: 0; } .ds-glass { position: relative; flex: 1 1 0; margin: 0; padding: 7px; border-radius: 2px; background: var(--brass-grad-x, linear-gradient(90deg, #a8823a 0%, #e9cc88 30%, #cfa758 55%, #9c7732 80%, #d3ad60 100%)); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.85), inset 0 0 0 1px rgba(94, 71, 25, 0.35); overflow: hidden; } .ds-glass--center { flex-grow: 1.3; } .ds-glass--left { transform-origin: right center; transform: rotateY(24deg); } .ds-glass--right { transform-origin: left center; transform: rotateY(-24deg); } .ds-glass::before { content: \"\"; position: absolute; inset: 7px; background: linear-gradient(180deg, transparent 4.6%, rgba(232, 204, 140, 0.5) 5.2%, rgba(150, 118, 56, 0.45) 6%, transparent 6.6%), linear-gradient(90deg, rgba(10, 34, 25, 0.8) 0, rgba(10, 34, 25, 0) 13%, rgba(10, 34, 25, 0) 87%, rgba(10, 34, 25, 0.8) 100%), radial-gradient(80% 45% at 50% 0%, rgba(255, 238, 200, 0.42), transparent 70%), linear-gradient(90deg, rgba(12, 28, 22, 0.55) 0%, rgba(40, 80, 66, 0.2) 9%, rgba(12, 28, 22, 0.5) 17%, rgba(46, 90, 74, 0.18) 27%, rgba(12, 28, 22, 0.45) 36%, rgba(40, 80, 66, 0.16) 47%, rgba(12, 28, 22, 0.5) 58%, rgba(46, 90, 74, 0.2) 69%, rgba(12, 28, 22, 0.48) 79%, rgba(40, 80, 66, 0.18) 90%, rgba(12, 28, 22, 0.55) 100%), linear-gradient(180deg, #b7c2bb 0%, #8a9891 38%, #5c6b64 72%, #3e4b45 100%); } .ds-glass--left::before { box-shadow: inset 40px 0 40px -20px rgba(0, 0, 0, 0.28); } .ds-glass--right::before { box-shadow: inset -40px 0 40px -20px rgba(0, 0, 0, 0.28); } .ds-glass::after { content: \"\"; position: absolute; top: 7px; bottom: 7px; left: -60%; width: 220%; pointer-events: none; mix-blend-mode: screen; background: linear-gradient(104deg, transparent 38%, rgba(255, 255, 255, 0.22) 46%, rgba(255, 255, 255, 0.06) 50%, transparent 57%); transform: translateX(-10%); transition: transform 900ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-mirror:hover .ds-glass::after { transform: translateX(12%); }"
+    },
+    {
+      "name": "Garment on the Rail",
+      "kind": "custom",
+      "refersTo": "garment-cloth",
+      "description": "Signature: a garment hanging from a brass hook, cloth colour under twill shading, a woven label sewn into the lining, an Imbue title below. Shown with the material fallback.",
+      "html": "<div class=\"ds-rail\"><span class=\"ds-rail__rod\"></span><div class=\"ds-garment\"><span class=\"ds-garment__hook\"></span><figure class=\"ds-garment__cloth\"><span class=\"ds-woven\">Parla</span></figure><h3 class=\"ds-garment__name\">Business</h3><p class=\"ds-garment__text\">Für Büro, Kundentermin und Vorstellungsgespräch.</p></div></div>",
+      "css": ".ds-rail { position: relative; padding-top: 22px; width: min(100%, 300px); } .ds-rail__rod { position: absolute; top: 0; left: -1.5rem; right: -1.5rem; height: 7px; border-radius: 7px; background: var(--brass-grad, linear-gradient(180deg, #f3dca2 0%, #d8b264 38%, #a78139 72%, #c9a153 100%)); box-shadow: 0 4px 8px -3px rgba(0, 0, 0, 0.7); } .ds-garment { position: relative; padding-top: 38px; transform-origin: 50% -22px; transition: transform 600ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-garment:hover { transform: rotate(1.2deg); } .ds-garment__hook { position: absolute; top: -22px; left: 50%; width: 2px; height: 60px; margin-left: -1px; z-index: 2; background: linear-gradient(180deg, var(--brass-hi, #f0d596), var(--brass-lo, #8f6d2e)); } .ds-garment__hook::before { content: \"\"; position: absolute; top: -5px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; border: 2.5px solid var(--brass, #d8b264); box-shadow: inset 0 1px 0 rgba(255, 240, 200, 0.5); box-sizing: border-box; } .ds-garment__hook::after { content: \"\"; position: absolute; bottom: -5px; left: 50%; width: 96px; height: 9px; margin-left: -48px; border-radius: 2px; background: var(--brass-grad, linear-gradient(180deg, #f3dca2 0%, #d8b264 38%, #a78139 72%, #c9a153 100%)); box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.6); } .ds-garment__cloth { position: relative; margin: 0; aspect-ratio: 3 / 4; border-radius: 2px; overflow: hidden; box-shadow: 0 34px 60px -34px rgba(0, 0, 0, 0.9); background: radial-gradient(30% 7% at 50% 0%, rgba(0, 0, 0, 0.45), transparent), linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0) 22%, rgba(255, 255, 255, 0.05) 48%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.38)), linear-gradient(180deg, rgba(255, 244, 214, 0.08), rgba(0, 0, 0, 0.18)), var(--cloth-navy, #1c2a44); } .ds-woven { position: absolute; top: 13%; left: 50%; transform: translateX(-50%); padding: 0.55rem 1.1rem 0.55rem 1.45rem; background: #e9e1ca; color: #22302a; font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-stretch: 125%; font-weight: 700; font-size: 0.66rem; letter-spacing: 0.34em; text-transform: uppercase; outline: 1px dashed rgba(34, 48, 42, 0.45); outline-offset: -4px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35); } .ds-garment__name { margin: 1.4rem 0 0; font-family: var(--font-display, \"Imbue\", \"Didot\", \"Bodoni 72\", serif); font-weight: 460; font-size: clamp(1.9rem, 1.4rem + 1.2vw, 2.6rem); line-height: 1; color: var(--lamp, #efe7d4); } .ds-garment__text { margin: 0.55rem 0 0; max-width: 28ch; font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); font-size: 1.0625rem; line-height: 1.6; color: var(--lamp-2, #bcc5b0); }"
+    },
+    {
+      "name": "Name Plate",
+      "kind": "card",
+      "refersTo": "name-plate",
+      "description": "The shop sign: engraved caps inside a doubled brass hairline, square, straight on the velvet. The system's only boxed element, and it is not a card.",
+      "html": "<div class=\"ds-plate\"><p class=\"ds-plate__name\">Parla</p><p class=\"ds-plate__sub\">Herrenmode</p><address class=\"ds-plate__addr\">F1 8<br>68159 Mannheim</address></div>",
+      "css": ".ds-plate { width: min(100%, 22rem); padding: 2.2rem 2.4rem 2rem; border: 1px solid rgba(216, 178, 100, 0.75); outline: 1px solid rgba(216, 178, 100, 0.35); outline-offset: -7px; color: var(--brass, #d8b264); font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); } .ds-plate p, .ds-plate address { margin: 0; font-stretch: 125%; text-transform: uppercase; } .ds-plate__name { font-weight: 700; font-size: 1.7rem; letter-spacing: 0.34em; line-height: 1; color: var(--lamp, #efe7d4); } .ds-plate__sub { margin-top: 0.55rem !important; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.42em; } .ds-plate__addr { margin-top: 1.5rem !important; padding-top: 1rem; border-top: 1px solid rgba(216, 178, 100, 0.35); font-style: normal; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.2em; line-height: 1.7; color: var(--lamp-2, #bcc5b0); }"
+    },
+    {
+      "name": "Fact Row with Copy Chip",
+      "kind": "input",
+      "refersTo": "copy-chip",
+      "description": "A row of the facts list: dim caps term with a brass icon, lamplight value, and the pill copy chip that confirms with a check.",
+      "html": "<dl class=\"ds-facts\"><div class=\"ds-fact\"><dt><svg viewBox=\"0 0 256 256\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z\"/></svg><span>Adresse</span></dt><dd>F1 8, 68159 Mannheim <button type=\"button\" class=\"ds-copy\"><svg viewBox=\"0 0 256 256\" width=\"16\" height=\"16\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z\"/></svg><span>Adresse kopieren</span></button></dd></div></dl>",
+      "css": ".ds-facts { margin: 0; border-top: 1px solid var(--lamp-line, rgba(216, 178, 100, 0.26)); font-family: var(--font-body, \"Archivo\", system-ui, sans-serif); } .ds-fact { display: grid; grid-template-columns: minmax(9rem, 12rem) 1fr; gap: 1rem; padding-block: 1.3rem; border-bottom: 1px solid var(--lamp-line, rgba(216, 178, 100, 0.26)); } .ds-fact dt { display: flex; align-items: center; gap: 0.6rem; color: var(--lamp-3, #a7b6a4); font-size: 0.74rem; font-stretch: 125%; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; } .ds-fact dt svg { width: 1.1rem; height: 1.1rem; color: var(--brass, #d8b264); } .ds-fact dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.2rem; font-size: 1.0625rem; color: var(--lamp, #efe7d4); } .ds-copy { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.4rem; padding: 0.35rem 0.85rem; border: 0; border-radius: 999px; background: rgba(239, 231, 212, 0.07); color: var(--lamp-2, #bcc5b0); font: inherit; font-size: 0.8rem; cursor: pointer; transition: background-color 200ms ease, color 200ms ease, transform 160ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)); } .ds-copy svg { width: 1rem; height: 1rem; color: var(--brass, #d8b264); } .ds-copy:hover { background: rgba(239, 231, 212, 0.12); color: var(--lamp, #efe7d4); } .ds-copy:active { transform: scale(0.97); } .ds-copy:focus-visible { outline: 2px solid var(--brass-hi, #f0d596); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Anprobe",
+    "overview": "Every screen is the inside of a fitting cabin. The visitor has stepped behind the curtain, and everything he sees could plausibly be in that small, lamp-lit room: green cloth on the walls, a brass rod for the curtain, hooks for the suits, a mirror to stand in front of, an engraved sign by the door. The interface is built from those four materials (velvet, brass, mirror glass, lamplight) and nothing else. There are no cards, panels or generic UI chrome, because nothing like that hangs in a cabin.\n\nThe mood is warm, dim and quietly formal. Type reads like lamplight on dark cloth, and brass behaves like polished metal: a vertical gradient, a light top edge and a dark lower edge. Density is low. Each section is built around a single object (the three-way mirror, the garment rail, the arched mirror, the name plate, the social handle) with a few lines of copy next to it. Type carries the page at large sizes: a tall, narrow high-contrast face for anything read as a line, and a wide grotesk in spaced capitals for small engraved labels.\n\nMotion is physical and happens once. The curtain opens once per session, the suits swing once when the rail comes into view, and a sheen crosses the mirror glass as the pointer moves. Everything else is a short, quiet state change, and all of it is removed under reduced motion. The system deliberately avoids the menswear default of monochrome full-bleed model photography, a hairline serif and an \"explore\" button.",
+    "keyCharacteristics": [
+      "One continuous textured velvet ground from nav to footer; sections have no fills of their own.",
+      "Brass is the only accent, and it always reads as metal.",
+      "Every image sits in a brass-framed mirror or on cloth, and each frame looks finished before a photo is added.",
+      "Tall narrow display lines against wide engraved caps; two typefaces, never a third.",
+      "Square frames, pill-shaped controls, circular rings; one arch, reserved for the wedding mirror.",
+      "Depth comes from hanging objects and lamplight, never from raised surfaces.",
+      "German in the markup, Turkish in the script, swapped in place with a short crossfade."
+    ],
+    "rules": [
+      {
+        "name": "The One Ground Rule",
+        "body": "The velvet is laid once, on the body, and every section sits on it transparently. A section may add one warm lamplight pool (a radial gradient of rgba(240, 213, 150) at 0.10 to 0.14 alpha, fading out by 60 to 70%) and nothing else: no flat fills, no alternating bands, no section colours. The fixed nav and mobile dock are translucent velvet over a blur; the footer is the only shade, a 62% dark veil that the velvet still shows through.",
+        "section": "colors"
+      },
+      {
+        "name": "The Brass Is Hardware Rule",
+        "body": "Brass is the only accent, and it appears only where metal would be: rails, rings, hooks, frames, the holdback, the primary pill, icons, stars, hairlines and engraved caps. No second hue is introduced for emphasis, status or links. Links are lamplight with a brass underline.",
+        "section": "colors"
+      },
+      {
+        "name": "The Lamplight Rule",
+        "body": "Text is warm ivory in three steps (lamp, lamp-2, lamp-3), never pure white and never neutral grey. Pure white appears only as light inside the mirror sheen.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Faces Rule",
+        "body": "Imbue and Archivo only. Imbue sets anything meant to be read as a line (headings, beats, quotes, garment names, the handle, the phone number, menu links), always in sentence case, weights 400 to 460, never above 6rem, and tracked no tighter than -0.012em. Archivo sets everything else.",
+        "section": "typography"
+      },
+      {
+        "name": "The Engraved Caps Rule",
+        "body": "Uppercase appears only in Archivo, widened (125%, or 112% for nav links), at weight 500 to 700 and tracked 0.1em to 0.42em. Archivo at its normal 100% width is never set in caps, and Imbue is never set in caps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Standing Heading Rule",
+        "body": "A heading stands alone on the velvet. No kicker, eyebrow, section number or tag sits above it. The only caps line near a heading is a subheading for the list beneath it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Open Column Rule",
+        "body": "In a two-part row, copy and object are separated by one empty grid column: 5 | 6 in the hero, the wedding and the visit sections, 4 | 7 in the reviews, where the score sticks under the nav. Only the closing social row runs 8 | 4, bottom-aligned, with its side text right-aligned.",
+        "section": "layout"
+      },
+      {
+        "name": "The Stagger Rule",
+        "body": "Items in a sequence step diagonally down the page, like garments along a rail, instead of forming an aligned grid of equal boxes.",
+        "section": "layout"
+      },
+      {
+        "name": "The Hanging Object Rule",
+        "body": "Only things that hang cast a shadow, and it falls straight down: zero x-offset and a large negative spread. Text, containers and every control except the brass pill stay flat.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Lamp Above Rule",
+        "body": "Light comes from overhead. Highlights sit on top edges (a 1px inset light line), the hero and mirror pools sit at the top of the scene, and shadows fall below. The only low light is the soft glow under the closing row.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Frame Rule",
+        "body": "Frames are square (2px) and plates are squarer still (0). Pills are for controls a thumb presses, circles are for rings, and the arch is for the wedding mirror. Nothing that holds content is ever rounded beyond 2px.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Material Fallback Rule",
+        "body": "No slot ever shows a broken image, a grey box or a stock photo. Each photo lands inside a material that already looks finished without it.",
+        "section": "components"
+      },
+      {
+        "name": "The Once Rule",
+        "body": "Each signature motion plays once: the curtain once per session, the swing and the sweep once per page view. After that the room stays still except for the sheen following the pointer. Things that move across the screen use the in-out curve (cubic-bezier(0.77, 0, 0.175, 1)); entrances, hovers and presses use the ease-out curve (cubic-bezier(0.23, 1, 0.32, 1)); sheets use the drawer curve (cubic-bezier(0.32, 0.72, 0, 1)). Reduced motion removes all of it and leaves plain opacity fades.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do lay the velvet once on the body (velvet-900 under `velvet.jpg` at 1024px, soft-light) and keep every section transparent over it. A section may add one lamplight pool at 0.10 to 0.14 alpha.",
+      "Do render any brass surface wider than a hairline with one of the two brass gradients, and give brass hardware a light top edge.",
+      "Do keep frames and plates square: 2px on mirror glass, garment cloth and the shopfront; 0 on the name plate and the woven label.",
+      "Do reserve pills (999px) for small controls: brass and ghost buttons, the language toggle, the copy chip, the menu button and the skip link.",
+      "Do put every image in a slot with a real path in `images/` and a material fallback (silvered glass or twill cloth); make optional slots hide themselves when empty.",
+      "Do set headings in Imbue, sentence case, weight 420 to 460, at most 6rem; set caps only in Archivo widened to 125% (112% for nav links) with 0.1em to 0.42em tracking.",
+      "Do give each action row exactly one brass pill and a quieter partner (an arrow link, the phone numeral or a ghost pill).",
+      "Do write German copy in the HTML with a `data-i18n` key and add the Turkish string under the same key in the TR dictionary in `assets/js/site.js`.",
+      "Do move things across the screen on the in-out curve, bring things in on the ease-out curve, gate hover styles behind `(hover: hover) and (pointer: fine)`, and give every animation a reduced-motion fallback.",
+      "Do theme the browser surfaces from the palette: brass selection with velvet-ink text, a brass-shadow scrollbar on velvet ink, a 2px brass-highlight focus ring offset 3px."
+    ],
+    "donts": [
+      "Don't add cards, panels or boxed tiles of icon, heading and text; content sits on the velvet or inside a mirror, cloth or plate.",
+      "Don't give a section its own background fill, colour band or alternating tone.",
+      "Don't introduce a second accent hue; brass (with its highlight and shadow) is the only one, and the cloth colours never appear in UI.",
+      "Don't round a frame or plate beyond 2px, or put a pill shape on anything larger than a control. The arch belongs to the wedding mirror alone.",
+      "Don't place a kicker, eyebrow label, section number or tag above a heading.",
+      "Don't add a third typeface, set Imbue in capitals, or set Archivo capitals at its normal 100% width.",
+      "Don't use pure white or neutral grey for text, or brass shadow (#8f6d2e) for text of any size.",
+      "Don't cast shadows from text, controls other than the brass pill, or content containers; only hanging objects and hardware cast shadows.",
+      "Don't ship stock, placeholder or generated photos in a slot, or leave a slot that can show a broken image.",
+      "Don't hardcode Turkish in the HTML or German in the TR dictionary."
+    ]
+  }
+}
