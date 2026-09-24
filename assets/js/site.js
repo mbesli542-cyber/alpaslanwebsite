@@ -20,6 +20,7 @@
     menuOpen: 'Menüyü aç',
     menuClose: 'Menüyü kapat',
     menuLabel: 'Menü',
+    walkerLabel: 'Gri kruvaze takımlı bir adam prova aynasının önüne geliyor',
     heroTitle: 'Tam size<br>göre takım.',
     heroLead: 'Mannheim’da erkek giyimi. İş, davet ve düğün için birebir danışmanlık, Quadrate’nin tam ortasında.',
     route: 'Yol tarifi',
@@ -290,261 +291,64 @@
   });
 })();
 
-/* ---------- Turning model: the man turns in the fitting room, all three mirrors follow ---------- */
+/* ---------- The walk-in: after the curtain opens he walks onto the stage, stops in front of the mirrors ---------- */
 (() => {
   'use strict';
+  const walker = document.querySelector('[data-walker]');
   const triptych = document.querySelector('[data-mirror]');
-  if (!triptych) return;
-  const panels = [
-    { el: triptych.querySelector('.glass--left'), offset: 1 },
-    { el: triptych.querySelector('.glass--center'), offset: 0 },
-    { el: triptych.querySelector('.glass--right'), offset: 3 },
-  ];
-  const originals = panels.map((p) => p.el && p.el.querySelector('.slot__img'));
-  if (originals.some((img) => !img)) return;
-
-  // front, turn to one side, back, turn to the other side (the side shot mirrored)
-  const POSES = [
-    { src: originals[1].getAttribute('src') },
-    { src: originals[0].getAttribute('src') },
-    { src: originals[2].getAttribute('src') },
-    { src: originals[0].getAttribute('src'), flip: true },
-  ];
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let pose = 0;
-  let layers = [];
-  let timer = 0;
-  let resumeTimer = 0;
-  let visible = true;
-
-  const show = (next, dir = 1) => {
-    pose = (next + POSES.length) % POSES.length;
-    layers.forEach((set, pi) => {
-      const active = (pose + panels[pi].offset) % POSES.length;
-      set.forEach((img, i) => {
-        img.style.setProperty('--turn', `${dir * 10}px`);
-        img.classList.toggle('is-on', i === active);
-      });
-    });
-  };
-
-  const stop = () => { window.clearInterval(timer); timer = 0; };
-  const play = () => {
-    stop();
-    if (reduce.matches || !visible || document.hidden || triptych.classList.contains('has-video')) return;
-    timer = window.setInterval(() => show(pose + 1, 1), 2400);
-  };
-
-  const build = () => {
-    layers = panels.map((p, pi) => {
-      originals[pi].remove();
-      return POSES.map((ps) => {
-        const img = document.createElement('img');
-        img.className = 'pose' + (ps.flip ? ' pose--flip' : '');
-        img.src = ps.src;
-        img.alt = '';
-        img.decoding = 'async';
-        img.draggable = false;
-        p.el.appendChild(img);
-        return img;
-      });
-    });
-    triptych.classList.add('is-turning');
-    triptych.setAttribute('role', 'img');
-    triptych.setAttribute('aria-label', document.documentElement.lang === 'tr'
-      ? 'Prova kabininde dönen takım: önden, yandan ve arkadan'
-      : 'Anzug in der Anprobe, von vorne, von der Seite und von hinten');
-    show(0);
-    play();
-
-    // Drag sideways to turn him yourself
-    let startX = 0;
-    let stepped = 0;
-    let dragging = false;
-    triptych.addEventListener('pointerdown', (e) => {
-      if (triptych.classList.contains('has-video')) return;
-      dragging = true; startX = e.clientX; stepped = 0;
-      triptych.classList.add('is-dragging');
-      triptych.setPointerCapture(e.pointerId);
-      stop(); window.clearTimeout(resumeTimer);
-    });
-    triptych.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      const steps = Math.trunc((e.clientX - startX) / 45);
-      if (steps !== stepped) {
-        const dir = steps > stepped ? 1 : -1;
-        show(pose + dir, dir);
-        stepped = steps;
-      }
-    });
-    const end = () => {
-      if (!dragging) return;
-      dragging = false;
-      triptych.classList.remove('is-dragging');
-      resumeTimer = window.setTimeout(play, 5000);
-    };
-    triptych.addEventListener('pointerup', end);
-    triptych.addEventListener('pointercancel', end);
-
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; visible ? play() : stop(); }).observe(triptych);
-    }
-    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : play()));
-  };
-
-  // Only turn once all three photos exist; otherwise the mirrors keep their glass.
-  let pending = originals.length;
-  let failed = false;
-  const settle = (ok) => { failed = failed || !ok; if (--pending === 0 && !failed) build(); };
-  originals.forEach((img) => {
-    if (img.complete) settle(img.naturalWidth > 0);
-    else {
-      img.addEventListener('load', () => settle(true), { once: true });
-      img.addEventListener('error', () => settle(false), { once: true });
-    }
-  });
-})();
-
-/* ---------- Arrival: the mirrors stay empty until the curtain has opened, then he steps in ---------- */
-const whenArrived = (() => {
-  const triptych = document.querySelector('[data-mirror]');
+  if (!walker || !triptych) return;
   const root = document.documentElement;
-  const waiting = [];
-  let arrived = false;
-  const arrive = () => {
-    if (arrived) return;
-    arrived = true;
-    if (triptych) triptych.classList.add('is-arrived');
-    waiting.splice(0).forEach((fn) => fn());
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ua = navigator.userAgent;
+  // WebKit (Safari, every iOS browser) cannot draw transparent VP9 video, so it gets an animated WebP.
+  const webkit = /iP(hone|ad|od)/.test(ua) || (/Safari/.test(ua) && !/Chrome|Chromium|Edg|Android/.test(ua));
+
+  const reflect = () => triptych.classList.add('is-reflecting');
+  const settle = () => { walker.classList.add('is-standing'); reflect(); };
+
+  const still = () => {
+    const img = new Image();
+    img.src = 'videos/yuruyus-son.webp';
+    img.alt = '';
+    img.className = 'walker__media';
+    walker.appendChild(img);
+    walker.classList.add('is-on');
+    settle();
   };
-  const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900;
-  const start = () => window.setTimeout(arrive, root.classList.contains('curtain-seen') ? 150 : delay);
+
+  const walk = () => {
+    walker.classList.add('is-on');
+    if (reduce) { still(); return; }
+    if (webkit) {
+      const img = new Image();
+      img.alt = '';
+      img.className = 'walker__media';
+      img.src = 'videos/yuruyus.webp?play=' + Date.now(); // a fresh copy so the one-shot animation restarts
+      walker.appendChild(img);
+      window.setTimeout(reflect, 1700);
+      window.setTimeout(settle, 5200);
+      return;
+    }
+    const v = document.createElement('video');
+    v.className = 'walker__media';
+    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+    v.src = 'videos/yuruyus.webm';
+    walker.appendChild(v);
+    v.addEventListener('timeupdate', () => { if (v.currentTime > 1.7) reflect(); });
+    v.addEventListener('ended', settle, { once: true });
+    v.addEventListener('error', () => { v.remove(); still(); }, { once: true });
+    const r = v.play();
+    if (r && r.catch) r.catch(() => { v.remove(); still(); });
+  };
+
+  // Start as the curtain finishes opening; with no curtain, start almost at once.
   if (root.classList.contains('curtain-closed')) {
     const mo = new MutationObserver(() => {
-      if (!root.classList.contains('curtain-closed')) { mo.disconnect(); window.setTimeout(start, 1100); }
+      if (!root.classList.contains('curtain-closed')) { mo.disconnect(); window.setTimeout(walk, 800); }
     });
     mo.observe(root, { attributes: true, attributeFilter: ['class'] });
   } else {
-    start();
+    window.setTimeout(walk, 300);
   }
-  return (fn) => (arrived ? fn() : waiting.push(fn));
-})();
-
-/* ---------- Turning video: one 360° turn, shown in all three mirrors at different angles ---------- */
-(() => {
-  'use strict';
-  const triptych = document.querySelector('[data-mirror]');
-  const src = triptych && triptych.dataset.video;
-  if (!src || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const panels = [
-    { el: triptych.querySelector('.glass--left'), offset: 0.25 },
-    { el: triptych.querySelector('.glass--center'), offset: 0 },
-    { el: triptych.querySelector('.glass--right'), offset: 0.75 },
-  ];
-  if (panels.some((p) => !p.el)) return;
-
-  const videos = panels.map((p) => {
-    const v = document.createElement('video');
-    v.className = 'pose pose--video';
-    v.muted = true;
-    v.defaultMuted = true;
-    v.loop = true;
-    v.playsInline = true;
-    v.preload = 'auto';
-    v.setAttribute('muted', '');
-    v.setAttribute('playsinline', '');
-    v.setAttribute('aria-hidden', 'true');
-    if (triptych.dataset.poster) v.poster = triptych.dataset.poster;
-    const webm = triptych.dataset.videoWebm;
-    if (webm) { const s1 = document.createElement('source'); s1.src = webm; s1.type = 'video/webm'; v.appendChild(s1); }
-    const s2 = document.createElement('source'); s2.src = src; s2.type = 'video/mp4'; v.appendChild(s2);
-    p.el.appendChild(v);
-    return v;
-  });
-  const lead = videos[1];
-  let duration = 0;
-  let visible = true;
-
-  const align = (base) => {
-    videos.forEach((v, i) => {
-      const t = (base + panels[i].offset * duration) % duration;
-      if (Math.abs(v.currentTime - t) > 0.12) v.currentTime = t;
-    });
-  };
-  const playAll = () => {
-    if (!visible || document.hidden) return;
-    videos.forEach((v) => { const r = v.play(); if (r && r.catch) r.catch(() => {}); });
-  };
-  const pauseAll = () => videos.forEach((v) => v.pause());
-
-  let ready = 0;
-  videos.forEach((v) => v.addEventListener('loadeddata', () => {
-    if (++ready !== videos.length) return;
-    duration = lead.duration || 5;
-    align(0);
-    triptych.classList.add('has-video', 'is-turning');
-    videos.forEach((vv) => vv.classList.add('is-on'));
-    whenArrived(() => {
-      const intro = triptych.dataset.videoIntro;
-      if (!intro) { playAll(); return; }
-      // He walks in first: a one-off clip in every mirror (wings mirrored), then the turning loop takes over.
-      const intros = panels.map((p, i) => {
-        const v = document.createElement('video');
-        v.className = 'pose pose--video pose--intro is-on' + (i === 1 ? '' : ' pose--flip');
-        v.muted = true; v.playsInline = true; v.preload = 'auto';
-        const introWebm = triptych.dataset.videoIntroWebm;
-        if (introWebm) { const a = document.createElement('source'); a.src = introWebm; a.type = 'video/webm'; v.appendChild(a); }
-        const m = document.createElement('source'); m.src = intro; m.type = 'video/mp4'; v.appendChild(m);
-        v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
-        p.el.appendChild(v);
-        return v;
-      });
-      videos.forEach((vv) => vv.classList.remove('is-on'));
-      const finish = () => {
-        align(0);
-        videos.forEach((vv) => vv.classList.add('is-on'));
-        playAll();
-        intros.forEach((v) => { v.classList.remove('is-on'); window.setTimeout(() => v.remove(), 600); });
-      };
-      intros[1].addEventListener('ended', finish, { once: true });
-      intros[1].addEventListener('error', finish, { once: true });
-      intros.forEach((v) => { const r = v.play(); if (r && r.catch) r.catch(finish); });
-    });
-  }, { once: true }));
-  videos.forEach((v) => v.addEventListener('error', () => videos.forEach((vv) => vv.remove()), { once: true }));
-
-  // Keep the side mirrors in step with the centre mirror.
-  lead.addEventListener('timeupdate', () => { if (duration && !dragging) align(lead.currentTime); });
-
-  // Drag sideways to turn him by hand: scrubs all three mirrors.
-  let dragging = false;
-  let startX = 0;
-  let startT = 0;
-  triptych.addEventListener('pointerdown', (e) => {
-    if (!triptych.classList.contains('has-video')) return;
-    dragging = true; startX = e.clientX; startT = lead.currentTime;
-    triptych.classList.add('is-dragging');
-    triptych.setPointerCapture(e.pointerId);
-    pauseAll();
-  });
-  triptych.addEventListener('pointermove', (e) => {
-    if (!dragging) return;
-    const width = triptych.getBoundingClientRect().width || 1;
-    let t = (startT - ((e.clientX - startX) / width) * duration) % duration;
-    if (t < 0) t += duration;
-    videos.forEach((v, i) => { v.currentTime = (t + panels[i].offset * duration) % duration; });
-  });
-  const end = () => {
-    if (!dragging) return;
-    dragging = false;
-    triptych.classList.remove('is-dragging');
-    playAll();
-  };
-  triptych.addEventListener('pointerup', end);
-  triptych.addEventListener('pointercancel', end);
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; visible ? playAll() : pauseAll(); }).observe(triptych);
-  }
-  document.addEventListener('visibilitychange', () => (document.hidden ? pauseAll() : playAll()));
 })();

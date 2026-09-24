@@ -1288,3 +1288,39 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
 /* Empty mirrors until he steps in front of them after the curtain opens */
 .js .triptych:not(.is-arrived) .pose { opacity: 0 !important; transform: translateX(16%) !important; filter: blur(4px) !important; }
 .js .triptych .pose--video { transition: opacity 900ms ease, transform 1400ms var(--ease-out), filter 900ms ease; }
+
+/* ---------- The walk-in ---------- */
+/* Mirrors show nothing until he stands in front of them; then his back and sides appear in the glass */
+.triptych:not(.is-reflecting) .slot__img { opacity: 0 !important; }
+.triptych .slot__img { transition: opacity 1400ms ease; }
+.slot__img--flip { scale: -1 1; }
+
+.walker {
+  position: absolute;
+  left: 50%;
+  bottom: -9%;
+  height: 112%;
+  aspect-ratio: 540 / 936;
+  z-index: 5;
+  pointer-events: none;
+  transform: translateX(-50%) translateZ(140px);
+  /* he fades in as he crosses the right edge of his frame */
+  -webkit-mask-image: linear-gradient(to left, transparent 0, #000 22%);
+  mask-image: linear-gradient(to left, transparent 0, #000 22%);
+}
+.walker::after {
+  /* his shadow on the cabin floor */
+  content: "";
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  bottom: 1.5%;
+  height: 5%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.5), transparent);
+  opacity: 0;
+  transition: opacity 1200ms ease 900ms;
+  z-index: -1;
+}
+.walker.is-on::after { opacity: 1; }
+.walker__media { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }

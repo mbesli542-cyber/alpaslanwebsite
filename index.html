@@ -27,9 +27,8 @@
         if (lang === 'tr') d.setAttribute('data-lang-pending', 'tr');
       } catch (e) {}
       var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var seen = false;
-      try { seen = sessionStorage.getItem('parla-curtain') === '1'; } catch (e) {}
-      if (!reduce && !seen) {
+      // The curtain opens on every visit.
+      if (!reduce) {
         d.classList.add('curtain-closed');
         // Safety net: never leave the curtain shut if the main script fails to load.
         setTimeout(function () { d.classList.remove('curtain-closed'); }, 2600);
@@ -155,16 +154,17 @@
           </div>
         </div>
 
-        <div class="triptych" data-mirror data-video-intro="videos/anprobe-giris.mp4" data-video-intro-webm="videos/anprobe-giris.webm" data-video="videos/anprobe.mp4" data-video-webm="videos/anprobe.webm" data-poster="videos/anprobe-poster.jpg">
+        <div class="triptych" data-mirror>
           <figure class="glass glass--wing glass--left slot">
-            <img class="slot__img" src="images/spiegel-seite.jpg" alt="Anzug von der Seite im Spiegel" data-i18n-attr="alt:altSide" width="600" height="1000" decoding="async">
+            <img class="slot__img" src="images/spiegel-seite.jpg" alt="" width="600" height="1000" decoding="async">
           </figure>
           <figure class="glass glass--center slot">
-            <img class="slot__img" src="images/spiegel-vorne.jpg" alt="Anzug von vorne im Spiegel der Anprobe" data-i18n-attr="alt:altFront" width="720" height="1200" decoding="async" fetchpriority="high">
+            <img class="slot__img" src="images/spiegel-hinten.jpg" alt="" width="720" height="1200" decoding="async">
           </figure>
           <figure class="glass glass--wing glass--right slot">
-            <img class="slot__img" src="images/spiegel-hinten.jpg" alt="Anzug von hinten im Spiegel" data-i18n-attr="alt:altBack" width="600" height="1000" decoding="async">
+            <img class="slot__img slot__img--flip" src="images/spiegel-seite.jpg" alt="" width="600" height="1000" decoding="async">
           </figure>
+          <div class="walker" data-walker role="img" aria-label="Ein Mann im grauen Zweireiher tritt vor den Spiegel der Anprobe" data-i18n-attr="aria-label:walkerLabel"></div>
         </div>
       </div>
     </section>
