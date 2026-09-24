@@ -2,19 +2,19 @@
 name: PARLA Herrenmode
 description: A lamp-lit fitting cabin in green velvet, brass and mirror glass, for a menswear store in Mannheim.
 colors:
-  brass: "#d8b264"
-  brass-hi: "#f0d596"
-  brass-lo: "#8f6d2e"
-  velvet-975: "#081a14"
-  velvet-950: "#0c261e"
-  velvet-900: "#12382c"
-  velvet-850: "#164133"
-  lamp: "#efe7d4"
-  lamp-2: "#bcc5b0"
-  lamp-3: "#a7b6a4"
-  lamp-line: "rgba(216, 178, 100, 0.26)"
-  cloth-navy: "#1c2a44"
-  cloth-charcoal: "#33373b"
+  brass: "#e6c476"
+  brass-hi: "#f7e1a8"
+  brass-lo: "#a17c38"
+  velvet-975: "#10261e"
+  velvet-950: "#1b3d31"
+  velvet-900: "#264e40"
+  velvet-850: "#2c5647"
+  lamp: "#f5eedd"
+  lamp-2: "#e8e9dc"
+  lamp-3: "#dfe1d1"
+  lamp-line: "rgba(232, 198, 121, 0.36)"
+  cloth-navy: "#24365a"
+  cloth-charcoal: "#3f4448"
   cloth-ivory: "#e7dfcc"
 typography:
   display:
