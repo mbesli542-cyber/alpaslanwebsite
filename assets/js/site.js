@@ -20,7 +20,7 @@
     menuOpen: 'Menüyü aç',
     menuClose: 'Menüyü kapat',
     menuLabel: 'Menü',
-    walkerLabel: 'Gri kruvaze takımlı bir adam prova aynasının önüne geliyor',
+    walkerLabel: 'Deve tüyü paltolu, kiremit rengi ceketli bir adam prova aynasının önüne geliyor',
     shopTitle: 'Mağazadan, size.',
     shopLead: 'Mannheim’daki mağazamızdan takım elbise ve damatlıklar. Online sipariş verin, kargoyla gelsin ya da F1 8’den teslim alın.',
     filterLabel: 'Kategori',
