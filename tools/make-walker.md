@@ -1,6 +1,6 @@
 # Walk-in cutout (videos/yuruyus.*)
 
-Source: Seedance clip supplied by the owner (man walks in, buttons his jacket).
+Source: 1080p Seedance clip supplied by the owner (man in camel coat walks in, checks his watch).
 1. `ffmpeg -i source.mp4 -vf scale=540:-2 in/f%03d.png`
 2. Background removed per frame with rembg (`u2net_human_seg`), near-white pixels cleared.
 3. `videos/yuruyus.webm`: VP9 with alpha (`-pix_fmt yuva420p`), cropped to 720x1248 (full source resolution, crf 22), for Chrome, Edge, Firefox, Android.

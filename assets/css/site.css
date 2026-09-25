@@ -1300,7 +1300,7 @@ html:not([lang="tr"]) [data-tr-only] { display: none; }
   left: 50%;
   bottom: -9%;
   height: 112%;
-  aspect-ratio: 540 / 936;
+  aspect-ratio: 9 / 16;
   z-index: 5;
   pointer-events: none;
   transform: translateX(-50%) translateZ(140px);
