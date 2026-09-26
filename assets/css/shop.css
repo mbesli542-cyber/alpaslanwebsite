@@ -242,3 +242,7 @@ body.is-locked { overflow: hidden; }
   .card { animation: none; }
   .sheet__panel { transform: none !important; }
 }
+
+/* Coming soon: the shop opens later */
+.shop__soon { min-height: 50dvh; align-content: center; }
+.soon__actions { display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: center; margin-top: 0.6rem; }

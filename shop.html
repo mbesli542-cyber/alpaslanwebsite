@@ -25,7 +25,6 @@
   <link rel="stylesheet" href="assets/css/site.css">
   <link rel="stylesheet" href="assets/css/shop.css">
   <script src="assets/js/site.js" defer></script>
-  <script src="assets/js/shop.js" defer></script>
 </head>
 <body class="shop-page">
   <svg class="sprite" aria-hidden="true" focusable="false">
@@ -58,6 +57,7 @@
         <a href="./#anzuege" data-i18n="navSuits">Anzüge</a>
         <a href="./#hochzeit" data-i18n="navWedding">Hochzeit</a>
         <a href="./#besuch" data-i18n="navVisit">Besuch</a>
+        <a href="galerie.html" data-i18n="navGallery">Galerie</a>
         <a href="shop.html" class="nav__shop" aria-current="page">Shop</a>
       </nav>
       <div class="nav__actions">
@@ -65,78 +65,23 @@
           <button type="button" class="lang__btn" data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
           <button type="button" class="lang__btn" data-lang="tr" aria-pressed="false" lang="tr" title="Türkçe">TR</button>
         </div>
-        <button type="button" class="cart-btn" data-cart-open aria-label="Warenkorb" data-i18n-attr="aria-label:cartLabel">
-          <svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>
-          <span class="cart-btn__count" data-cart-count hidden>0</span>
-        </button>
       </div>
     </div>
   </header>
 
   <main id="main" class="shop">
-    <section class="shop__head container" aria-labelledby="shop-title">
-      <h1 class="h2" id="shop-title" data-i18n="shopTitle">Aus der Anprobe, zu Ihnen.</h1>
-      <p class="lead" data-i18n="shopLead">Anzüge und Hochzeitsanzüge aus unserem Laden in Mannheim. Online bestellen, liefern lassen oder in F1 8 abholen.</p>
-      <div class="filters" role="group" aria-label="Kategorie" data-filters data-i18n-attr="aria-label:filterLabel"></div>
+    <section class="shop__head shop__soon container" aria-labelledby="shop-title">
+      <h1 class="h2" id="shop-title" data-i18n="shopSoonTitle">Bald verfügbar.</h1>
+      <p class="lead" data-i18n="shopSoonLead">Unser Online-Shop ist in Vorbereitung. Bis dahin finden Sie die ganze Auswahl bei uns im Laden in F1 8, mit persönlicher Beratung.</p>
+      <div class="soon__actions">
+        <a class="btn btn--brass" href="tel:+4962143728859">
+          <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+          <span data-i18n="call">Anrufen</span>
+        </a>
+        <a class="link-arrow" href="galerie.html"><span data-i18n="shopSoonGallery">Looks in der Galerie ansehen</span> <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
     </section>
-
-    <section class="container" aria-live="polite">
-      <ul class="grid" role="list" data-grid></ul>
-      <div class="shop__state" data-state hidden></div>
-    </section>
-
-    <p class="container shop__legal"><span data-i18n="vatNote">Alle Preise inkl. MwSt., zzgl.</span> <a href="versand.html" data-i18n="shippingLink">Versandkosten</a>.</p>
   </main>
-
-  <div class="sheet" data-product hidden>
-    <div class="sheet__backdrop" data-close></div>
-    <article class="sheet__panel product" role="dialog" aria-modal="true" aria-labelledby="product-name" tabindex="-1">
-      <button type="button" class="sheet__close" data-close aria-label="Schließen" data-i18n-attr="aria-label:close">
-        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
-      </button>
-      <div class="product__gallery" data-gallery></div>
-      <div class="product__info">
-        <p class="product__cat" data-p-cat></p>
-        <h2 class="product__name" id="product-name" data-p-name></h2>
-        <p class="product__price" data-p-price></p>
-        <p class="product__vat"><span data-i18n="vatNote">Alle Preise inkl. MwSt., zzgl.</span> <a href="versand.html" data-i18n="shippingLink">Versandkosten</a>.</p>
-        <fieldset class="sizes">
-          <legend data-i18n="chooseSize">Größe wählen</legend>
-          <div class="sizes__list" data-sizes></div>
-        </fieldset>
-        <p class="product__hint" data-size-hint></p>
-        <button type="button" class="btn btn--brass product__add" data-add disabled>
-          <svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>
-          <span data-i18n="addToCart">In den Warenkorb</span>
-        </button>
-        <p class="product__desc" data-p-desc></p>
-        <p class="product__help"><span data-i18n="sizeHelp">Unsicher bei der Größe? Wir beraten Sie gern.</span> <a href="tel:+4962143728859">0621 43728859</a></p>
-      </div>
-    </article>
-  </div>
-
-  <div class="sheet sheet--side" data-cart hidden>
-    <div class="sheet__backdrop" data-close></div>
-    <aside class="sheet__panel cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1">
-      <div class="cart__head">
-        <h2 class="cart__title" id="cart-title" data-i18n="cartTitle">Warenkorb</h2>
-        <button type="button" class="sheet__close" data-close aria-label="Schließen" data-i18n-attr="aria-label:close">
-          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
-        </button>
-      </div>
-      <ul class="cart__list" role="list" data-cart-list></ul>
-      <div class="cart__foot">
-        <div class="cart__row"><span data-i18n="subtotal">Zwischensumme</span><strong data-subtotal>0,00 €</strong></div>
-        <p class="cart__ship" data-ship-note></p>
-        <p class="cart__error" data-cart-error role="alert" hidden></p>
-        <button type="button" class="btn btn--brass cart__checkout" data-checkout>
-          <span data-i18n="checkout">Zur Kasse</span>
-        </button>
-        <p class="cart__secure" data-i18n="secure">Sichere Bezahlung über Stripe: Karte, PayPal, Klarna, Apple Pay, Google Pay.</p>
-      </div>
-    </aside>
-  </div>
-
 
   <footer class="footer">
     <div class="container footer__inner">
